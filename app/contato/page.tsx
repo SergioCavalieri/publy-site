@@ -103,7 +103,7 @@ export default function ContatoPage() {
       <Navbar dark />
 
       {/* Hero */}
-      <div style={{ padding: "100px 24px 56px", position: "relative", overflow: "hidden" }}>
+      <div style={{ padding: "100px 24px 56px", position: "relative", overflow: "hidden", maxWidth: "100vw" }}>
         {/* Glow */}
         <div style={{
           position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",

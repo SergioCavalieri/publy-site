@@ -87,7 +87,7 @@ export default async function PlanosPage() {
       <Navbar dark />
 
       {/* Hero */}
-      <section style={{ padding: "120px 24px 80px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <section style={{ padding: "120px 24px 80px", textAlign: "center", position: "relative", overflow: "hidden", maxWidth: "100vw" }}>
         {/* Glow */}
         <div style={{
           position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",

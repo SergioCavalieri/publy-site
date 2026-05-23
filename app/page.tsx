@@ -318,7 +318,6 @@ export default function HomePage() {
 
       {/* ── CTA Final ────────────────────────────── */}
       <section id="contato" style={{
-        background: "#0F0F0F",
         padding: "96px 24px",
         textAlign: "center",
         position: "relative", overflow: "hidden",

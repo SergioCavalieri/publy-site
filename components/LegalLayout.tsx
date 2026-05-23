@@ -22,7 +22,7 @@ export default function LegalLayout({ title, subtitle, updatedAt, sections }: Le
       <div style={{ minHeight: "100vh", paddingTop: 80 }}>
 
         {/* Hero */}
-        <div style={{ padding: "64px 24px 56px", position: "relative", overflow: "hidden" }}>
+        <div style={{ padding: "64px 24px 56px", position: "relative", overflow: "hidden", maxWidth: "100vw" }}>
           {/* Glow sutil */}
           <div style={{
             position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
