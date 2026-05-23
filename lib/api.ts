@@ -43,7 +43,7 @@ export interface CheckoutPayload {
 
 export async function getPlanos(): Promise<Plano[]> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_SAAS_API_URL}/api/v1/public/planos`, {
-    next: { revalidate: 300 },
+    cache: "no-store", // sempre busca dados frescos — alterações no saas aparecem imediatamente
   });
   if (!res.ok) throw new Error("Erro ao buscar planos");
   return res.json();
