@@ -39,7 +39,7 @@ export default function Navbar({ dark = false }: { dark?: boolean }) {
           }}>
             Funcionalidades
           </Link>
-          <Link href="/#contato" style={{
+          <Link href="/contato" style={{
             padding: "8px 16px", fontSize: 14, fontWeight: 500, color: textSub,
             borderRadius: 8, transition: "color 0.15s",
           }}>

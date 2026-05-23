@@ -42,7 +42,7 @@ export default function Footer() {
             {[
               ["Termos de uso", "/termos"],
               ["Privacidade", "/privacidade"],
-              ["Contato", "/#contato"],
+              ["Contato", "/contato"],
             ].map(([label, href]) => (
               <Link key={label} href={href} className="footer-link">
                 {label}
