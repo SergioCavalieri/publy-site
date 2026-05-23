@@ -1,0 +1,108 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --publy-blue:     #4F8EF7;
+  --publy-blue-dim: rgba(79,142,247,0.12);
+  --publy-ink:      #0F0F0F;
+  --publy-sand:     #F2F0EB;
+  --font-sans:      'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:      'DM Mono', 'Courier New', monospace;
+  --ease-out:       cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #F2F0EB;
+  color: #0F0F0F;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+button { cursor: pointer; font-family: inherit; }
+input, textarea, select { font-family: inherit; box-sizing: border-box; }
+a { text-decoration: none; color: inherit; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes publyPulse1 { 0%,100%{opacity:1}    50%{opacity:0.3}  }
+@keyframes publyPulse2 { 0%,100%{opacity:0.45}  50%{opacity:0.15} }
+@keyframes publyPulse3 { 0%,100%{opacity:0.7}   50%{opacity:0.2}  }
+@keyframes gridFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+.fade-up   { animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) both; }
+.fade-up-1 { animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.08s both; }
+.fade-up-2 { animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.16s both; }
+.fade-up-3 { animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.24s both; }
+.fade-up-4 { animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.32s both; }
+.fade-up-5 { animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.40s both; }
+.fade-up-6 { animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.48s both; }
+.fade-in   { animation: fadeIn 0.4s ease both; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 32px; background: #4F8EF7; color: #fff;
+  border: none; border-radius: 12px; font-weight: 700; font-size: 15px;
+  box-shadow: 0 4px 24px rgba(79,142,247,0.35);
+  transition: all 0.2s cubic-bezier(0.16,1,0.3,1);
+  cursor: pointer;
+}
+.btn-primary:hover { background: #3d7de8; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(79,142,247,0.45); }
+.btn-primary:disabled { opacity: 0.65; transform: none; cursor: not-allowed; }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 28px; background: transparent; color: #0F0F0F;
+  border: 1.5px solid rgba(0,0,0,0.15); border-radius: 12px;
+  font-weight: 600; font-size: 15px;
+  transition: all 0.2s; cursor: pointer;
+}
+.btn-secondary:hover { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.25); }
+
+.btn-ghost-white {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 28px; background: rgba(255,255,255,0.1);
+  color: #fff; border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 12px; font-weight: 600; font-size: 15px;
+  transition: all 0.2s; cursor: pointer;
+}
+.btn-ghost-white:hover { background: rgba(255,255,255,0.18); }
+
+.field-label {
+  display: block; font-size: 11px; font-weight: 700; color: #666;
+  text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px;
+}
+.field-input {
+  width: 100%; padding: 12px 14px; background: #fff;
+  border: 1.5px solid #E0DCD4; border-radius: 10px;
+  font-size: 14px; color: #0F0F0F; outline: none;
+  transition: border-color 0.15s;
+}
+.field-input:focus { border-color: #4F8EF7; box-shadow: 0 0 0 3px rgba(79,142,247,0.12); }
+.field-input::placeholder { color: #bbb; }
+
+.plan-card {
+  background: #fff; border: 1.5px solid #E0DCD4;
+  border-radius: 20px; padding: 32px 28px;
+  transition: transform 0.2s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s;
+  position: relative; overflow: hidden;
+}
+.plan-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.10); }
+.plan-card.destaque { border-color: #4F8EF7; box-shadow: 0 4px 32px rgba(79,142,247,0.18); }
+
+.footer-link {
+  display: block; color: #666; font-size: 14px;
+  margin-bottom: 10px; transition: color 0.15s;
+}
+.footer-link:hover { color: #ffffff; }
