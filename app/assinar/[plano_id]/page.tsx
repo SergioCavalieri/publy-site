@@ -138,7 +138,7 @@ export default function AssinarPage() {
                   <input className="field-input" value={form.nome} onChange={(e) => set("nome", e.target.value)} required placeholder="João Silva" />
                 </Field>
                 <Field label="E-mail *">
-                  <input className="field-input" type="email" value={form.email} onChange={(e) => set("email", e.target.value)} required placeholder="joao@bar.com" />
+                  <input className="field-input" type="email" value={form.email} onChange={(e) => set("email", e.target.value)} required placeholder="joao@seunegocio.com" />
                 </Field>
                 <div style={{ gridColumn: "1/-1" }}>
                   <Field label="Telefone / WhatsApp *">
@@ -153,8 +153,8 @@ export default function AssinarPage() {
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
                 <div style={{ gridColumn: "1/-1" }}>
-                  <Field label="Nome do bar / estabelecimento *">
-                    <input className="field-input" value={form.nome_estabelecimento} onChange={(e) => set("nome_estabelecimento", e.target.value)} required placeholder="Bar do João" />
+                  <Field label="Nome do estabelecimento *">
+                    <input className="field-input" value={form.nome_estabelecimento} onChange={(e) => set("nome_estabelecimento", e.target.value)} required placeholder="Ex: Cantina do João, Café Vila..." />
                   </Field>
                 </div>
                 <Field label="Razão Social">

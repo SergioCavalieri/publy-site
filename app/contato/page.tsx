@@ -158,7 +158,7 @@ export default function ContatoPage() {
                       onChange={(e) => set("email", e.target.value)}
                       onFocus={() => setFocado("email")}
                       onBlur={() => setFocado(null)}
-                      placeholder="joao@seubar.com"
+                      placeholder="joao@seunegocio.com"
                       required
                     />
                   </Field>

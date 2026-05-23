@@ -48,11 +48,11 @@ const STEPS = [
 export const metadata: Metadata = {
   title: "Publy — Sistema de pedidos para bares e pubs",
   description:
-    "Autoatendimento via QR Code, kanban em tempo real e gestão completa para bares, pubs e restaurantes. Comece grátis por 14 dias, sem cartão de crédito.",
+    "Autoatendimento via QR Code, kanban em tempo real e gestão completa para restaurantes, cafés, pizzarias e estabelecimentos de alimentação. Comece grátis por 14 dias, sem cartão de crédito.",
   alternates: { canonical: SITE_URL },
   openGraph: {
     title: "Publy — Sistema de pedidos para bares e pubs",
-    description: "QR Code por mesa, kanban para a cozinha, fechamento de conta e analytics. 14 dias grátis.",
+    description: "QR Code por mesa, kanban, fechamento de conta e analytics para qualquer estabelecimento. 14 dias grátis.",
     url: SITE_URL,
     type: "website",
   },
@@ -123,14 +123,14 @@ export default function HomePage() {
             marginBottom: 24,
           }}>
             O sistema completo<br />
-            <span style={{ color: "#4F8EF7" }}>para o seu bar</span>
+            <span style={{ color: "#4F8EF7" }}>para o seu negócio</span>
           </h1>
 
           <p className="fade-up-3" style={{
             fontSize: "clamp(16px, 2vw, 20px)", color: "#888",
             lineHeight: 1.7, marginBottom: 40, maxWidth: 560, margin: "0 auto 40px",
           }}>
-            QR Code por mesa, pedidos em tempo real, kanban para a cozinha e relatórios de vendas — tudo num só lugar.
+            QR Code por mesa, pedidos em tempo real, kanban para a cozinha e relatórios de vendas — tudo que o seu estabelecimento precisa, num só lugar.
           </p>
 
           <div className="fade-up-4" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -334,10 +334,10 @@ export default function HomePage() {
             <PublyLogo size={16} gap={5} color="#4F8EF7" animated />
           </div>
           <h2 style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: 20, lineHeight: 1.2 }}>
-            Pronto para modernizar<br />o seu bar?
+            Pronto para modernizar<br />o seu estabelecimento?
           </h2>
           <p style={{ fontSize: 17, color: "#777", marginBottom: 40, lineHeight: 1.7 }}>
-            14 dias grátis, sem cartão de crédito. Configure em menos de 30 minutos.
+            14 dias grátis, sem cartão de crédito. Funciona para restaurantes, cafés, pizzarias, bares e muito mais.
           </p>
           <Link href="/planos" className="btn-primary" style={{ fontSize: 17, padding: "16px 40px" }}>
             Começar agora — grátis →

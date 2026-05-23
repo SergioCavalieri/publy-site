@@ -15,7 +15,7 @@ export default function Footer() {
           <div>
             <PublyLogo size={10} gap={3} withName nameSize={16} dark animated />
             <p style={{ color: "#666", fontSize: 14, marginTop: 16, lineHeight: 1.7, maxWidth: 300 }}>
-              O sistema de pedidos completo para bares, pubs e restaurantes. QR Code, kanban e gestão em tempo real.
+              O sistema de pedidos completo para restaurantes, cafés, pizzarias, bares e estabelecimentos de alimentação. QR Code, kanban e gestão em tempo real.
             </p>
           </div>
 

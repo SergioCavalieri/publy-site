@@ -8,11 +8,11 @@ import { SITE_URL, faqSchema, breadcrumbSchema } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Planos e preços",
   description:
-    "Escolha o plano ideal para o seu bar ou pub. A partir de R$39,90/mês com 14 dias grátis, sem cartão de crédito.",
+    "Escolha o plano ideal para o seu estabelecimento. A partir de R$39,90/mês com 14 dias grátis, sem cartão de crédito.",
   alternates: { canonical: `${SITE_URL}/planos` },
   openGraph: {
     title: "Planos e preços | Publy",
-    description: "Planos a partir de R$39,90/mês. 14 dias grátis, sem cartão.",
+    description: "Planos para restaurantes, cafés, pizzarias e estabelecimentos. 14 dias grátis, sem cartão.",
     url: `${SITE_URL}/planos`,
   },
 };
@@ -35,8 +35,8 @@ function getTier(nome: string) {
 }
 
 const TIER_CONFIG = {
-  basic: { label: "Básico", cor: "#4F8EF7", destaque: false, desc: "Perfeito para bares pequenos que querem começar com agilidade." },
-  pro:   { label: "Pró",    cor: "#7C3AED", destaque: true,  desc: "Para estabelecimentos em crescimento com mais movimento." },
+  basic: { label: "Básico", cor: "#4F8EF7", destaque: false, desc: "Perfeito para estabelecimentos menores que querem começar com agilidade." },
+  pro:   { label: "Pró",    cor: "#7C3AED", destaque: true,  desc: "Para estabelecimentos em crescimento com mais movimento e demanda." },
   max:   { label: "Pró Max",cor: "#0F0F0F", destaque: false, desc: "Para casas maiores que precisam do máximo de capacidade." },
 };
 
@@ -52,7 +52,7 @@ function getFeatures(plano: Plano) {
   const base = [
     "Cardápio digital via QR Code",
     "Pedidos em tempo real",
-    "Kanban para cozinha / bar",
+    "Kanban para cozinha e atendimento",
     "Fechamento de conta por mesa",
     plano.max_mesas ? `Até ${plano.max_mesas} mesas simultâneas` : "Mesas ilimitadas",
     plano.max_produtos ? `Até ${plano.max_produtos} produtos no cardápio` : "Produtos ilimitados",
@@ -93,7 +93,7 @@ export default async function PlanosPage() {
           Planos e preços
         </div>
         <h1 style={{ fontSize: "clamp(32px,5vw,56px)", fontWeight: 800, color: "#0F0F0F", letterSpacing: "-0.02em", lineHeight: 1.1, marginBottom: 20 }}>
-          Escolha o plano ideal<br />para o seu bar
+          Escolha o plano ideal<br />para o seu estabelecimento
         </h1>
         <p style={{ fontSize: 18, color: "#666", maxWidth: 480, margin: "0 auto 16px" }}>
           Todos os planos incluem 14 dias de trial gratuito. Sem cartão de crédito.

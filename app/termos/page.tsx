@@ -42,7 +42,7 @@ export default function TermosPage() {
                 {[
                   "Cardápio digital acessível via QR Code por mesa",
                   "Recebimento e gestão de pedidos em tempo real",
-                  "Painel kanban para acompanhamento da cozinha e do bar",
+                  "Painel kanban para acompanhamento da cozinha e atendimento",
                   "Fechamento de contas e controle de mesas",
                   "Relatórios e analytics de vendas",
                   "Controle de estoque e produtos",
