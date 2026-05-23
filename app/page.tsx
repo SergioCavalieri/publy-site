@@ -147,53 +147,93 @@ export default function HomePage() {
           </p>
         </div>
 
-        {/* Mock de interface */}
+        {/* Mock de interface — fiel ao visual real do Publy */}
         <div className="fade-up-6" style={{
           position: "relative", marginTop: 72,
-          maxWidth: 900, width: "100%",
+          maxWidth: 980, width: "100%",
           animation: "gridFloat 6s ease-in-out infinite",
+          borderRadius: 16, overflow: "hidden",
+          boxShadow: "0 40px 100px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.06)",
         }}>
-          <div style={{
-            background: "#1A1A1A", borderRadius: 16,
-            border: "1px solid rgba(255,255,255,0.08)",
-            overflow: "hidden",
-            boxShadow: "0 32px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05)",
-          }}>
-            {/* Window chrome */}
-            <div style={{ padding: "12px 16px", borderBottom: "1px solid rgba(255,255,255,0.06)", display: "flex", gap: 6, alignItems: "center" }}>
-              {["#FF5F57","#FFBD2E","#28CA41"].map((c) => (
-                <div key={c} style={{ width: 10, height: 10, borderRadius: "50%", background: c }} />
-              ))}
-              <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
-                <div style={{ background: "rgba(255,255,255,0.06)", borderRadius: 6, padding: "3px 16px", fontSize: 11, color: "#555", fontFamily: "monospace" }}>
-                  publy.app/admin/pedidos
-                </div>
+          {/* ── Barra de título do browser (macOS) ── */}
+          <div style={{ background: "#1e1e1e", padding: "10px 16px", display: "flex", alignItems: "center", gap: 8, borderBottom: "1px solid #111" }}>
+            {["#FF5F57","#FFBD2E","#28CA41"].map((c) => (
+              <div key={c} style={{ width: 11, height: 11, borderRadius: "50%", background: c, flexShrink: 0 }} />
+            ))}
+            <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
+              <div style={{ background: "#2a2a2a", borderRadius: 6, padding: "4px 20px", fontSize: 11, color: "#888", fontFamily: "monospace", letterSpacing: "0.02em" }}>
+                publy.app/admin/pedidos
               </div>
             </div>
-            {/* Kanban mock */}
-            <div style={{ padding: 20, display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12 }}>
-              {[
-                { label: "Novos", count: 3, color: "#4F8EF7" },
-                { label: "Preparando", count: 5, color: "#EF9F27" },
-                { label: "Prontos", count: 2, color: "#22C55E" },
-                { label: "Entregues", count: 8, color: "#444" },
-              ].map(({ label, count, color }) => (
-                <div key={label} style={{ background: "rgba(255,255,255,0.03)", borderRadius: 10, padding: 12 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-                    <span style={{ fontSize: 11, fontWeight: 700, color, textTransform: "uppercase", letterSpacing: "0.06em" }}>{label}</span>
-                    <span style={{ fontSize: 11, color, background: `${color}20`, padding: "2px 7px", borderRadius: 20, fontWeight: 700 }}>{count}</span>
-                  </div>
-                  {Array.from({ length: Math.min(count, 3) }).map((_, i) => (
-                    <div key={i} style={{ background: "#2A2A2A", borderRadius: 7, padding: "8px 10px", marginBottom: 6, borderLeft: `3px solid ${color}` }}>
-                      <div style={{ fontSize: 10, color: "#666", marginBottom: 3 }}>Mesa {[3,7,11][i % 3]}</div>
-                      <div style={{ fontSize: 11, color: "#ccc", fontWeight: 500 }}>
-                        {["2x Cerveja", "1x Hambúrguer", "3x Água", "1x Picanha", "2x Frango"][i % 5]}
-                      </div>
+          </div>
+
+          {/* ── Navbar do sistema Publy ── */}
+          <div style={{ background: "#0F0F0F", padding: "0 16px", display: "flex", alignItems: "center", gap: 12, height: 44, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+            {/* Logo Publy */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2,8px)", gap: 2.5, marginRight: 4 }}>
+              {[1,0.45,0.45,1,1,0.2].map((op,i) => (
+                <div key={i} style={{ width:8, height:8, borderRadius:2, background:"#4F8EF7", opacity:op }} />
+              ))}
+            </div>
+            <span style={{ fontSize: 11, fontWeight: 300, color: "#fff", letterSpacing: "0.14em", textTransform: "uppercase", fontFamily: "sans-serif" }}>PUBLY</span>
+            <div style={{ width: 1, height: 18, background: "rgba(255,255,255,0.1)", margin: "0 4px" }} />
+            <span style={{ fontSize: 11, color: "#666" }}>Admin</span>
+            {/* Spacer */}
+            <div style={{ flex: 1 }} />
+            {/* Online badge */}
+            <div style={{ display: "flex", alignItems: "center", gap: 5, background: "rgba(34,197,94,0.12)", border: "1px solid rgba(34,197,94,0.25)", borderRadius: 100, padding: "3px 10px" }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E" }} />
+              <span style={{ fontSize: 10, color: "#22C55E", fontWeight: 600 }}>Online</span>
+            </div>
+            <div style={{ background: "#1a1a1a", borderRadius: 6, padding: "4px 10px", fontSize: 10, color: "#aaa" }}>Admin</div>
+            <div style={{ background: "#ef4444", borderRadius: 6, padding: "4px 10px", fontSize: 10, color: "#fff", fontWeight: 700 }}>Sair</div>
+          </div>
+
+          {/* ── Tabs de navegação ── */}
+          <div style={{ background: "#ffffff", borderBottom: "1px solid #e8e4dc", padding: "0 16px", display: "flex", gap: 0 }}>
+            {[
+              { label: "Geral", active: true },
+              { label: "Recebido" }, { label: "Em preparo" }, { label: "Pronto!" },
+              { label: "Entregue" }, { label: "Mesas" }, { label: "Contas" },
+            ].map(({ label, active }) => (
+              <div key={label} style={{
+                padding: "10px 14px", fontSize: 11, fontWeight: active ? 600 : 400,
+                color: active ? "#4F8EF7" : "#888",
+                borderBottom: active ? "2px solid #4F8EF7" : "2px solid transparent",
+                whiteSpace: "nowrap",
+              }}>{label}</div>
+            ))}
+          </div>
+
+          {/* ── Kanban Board ── */}
+          <div style={{ background: "#F2F0EB", padding: "14px 12px", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 10 }}>
+            {[
+              { label: "Recebido",   count: 3, bg: "#3B82F6", light: "rgba(59,130,246,0.08)",
+                items: [["Mesa 3","2x Cerveja"],["Mesa 7","1x Hambúrguer"],["Mesa 11","3x Água"]] },
+              { label: "Em preparo", count: 5, bg: "#F97316", light: "rgba(249,115,22,0.08)",
+                items: [["Mesa 3","2x Cerveja"],["Mesa 7","1x Hambúrguer"],["Mesa 11","3x Água"]] },
+              { label: "Pronto!",    count: 2, bg: "#22C55E", light: "rgba(34,197,94,0.08)",
+                items: [["Mesa 3","2x Cerveja"],["Mesa 7","1x Hambúrguer"],["Mesa 11","3x Água"]] },
+              { label: "Entregue",   count: 8, bg: "#6B7280", light: "rgba(107,114,128,0.06)",
+                items: [["Mesa 3","2x Cerveja"],["Mesa 7","1x Hambúrguer"],["Mesa 11","3x Água"]] },
+            ].map(({ label, count, bg, light, items }) => (
+              <div key={label} style={{ borderRadius: 12, overflow: "hidden", background: "#fff", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
+                {/* Header da coluna */}
+                <div style={{ background: bg, padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ fontSize: 11, fontWeight: 800, color: "#fff", letterSpacing: "0.04em" }}>{label}</span>
+                  <span style={{ fontSize: 11, fontWeight: 800, color: "#fff", background: "rgba(255,255,255,0.25)", padding: "1px 8px", borderRadius: 100 }}>{count}</span>
+                </div>
+                {/* Cards */}
+                <div style={{ background: light, padding: 8, display: "flex", flexDirection: "column", gap: 6 }}>
+                  {items.map(([mesa, item], i) => (
+                    <div key={i} style={{ background: "#fff", borderRadius: 8, padding: "7px 10px", boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
+                      <div style={{ fontSize: 9, color: "#aaa", marginBottom: 2, fontWeight: 500 }}>{mesa}</div>
+                      <div style={{ fontSize: 11, color: "#111", fontWeight: 600 }}>{item}</div>
                     </div>
                   ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
