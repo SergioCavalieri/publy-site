@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PlanosClient from "@/components/PlanosClient";
 import { getPlanos, type Plano } from "@/lib/api";
 import { SITE_URL, faqSchema, breadcrumbSchema } from "@/lib/seo";
 
@@ -19,52 +19,11 @@ export const metadata: Metadata = {
 
 const FAQ_ITEMS = [
   { question: "Preciso de cartão de crédito para o trial?", answer: "Não. O trial de 14 dias é totalmente gratuito. Você só fornece os dados de pagamento ao final do período, se quiser continuar." },
-  { question: "Posso mudar de plano depois?", answer: "Sim, a qualquer momento. O ajuste é proporcional ao período restante do mês." },
+  { question: "Posso mudar de plano depois?", answer: "Sim, a qualquer momento. O ajuste é proporcional ao período restante." },
   { question: "Como funciona o cancelamento?", answer: "Cancele quando quiser pelo painel, sem multa. O acesso permanece até o fim do período pago." },
+  { question: "O desconto anual/bienal vale desde o trial?", answer: "O trial é sempre gratuito por 14 dias independente do período escolhido. O desconto começa a valer na primeira cobrança após o trial." },
   { question: "O sistema roda em tablet e celular?", answer: "Sim. O painel admin funciona em qualquer dispositivo moderno. O cardápio do cliente é 100% mobile." },
 ];
-
-const fmtVal = (v: number) =>
-  Number(v).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-
-function getTier(nome: string) {
-  if (nome.toLowerCase().includes("pró max") || nome.toLowerCase().includes("pro max")) return "max";
-  if (nome.toLowerCase().includes("pró") || nome.toLowerCase().includes("pro")) return "pro";
-  return "basic";
-}
-
-const TIER_CONFIG = {
-  basic: { label: "Básico", cor: "#4F8EF7", destaque: false, desc: "Perfeito para estabelecimentos menores que querem começar com agilidade." },
-  pro:   { label: "Pró",    cor: "#7C3AED", destaque: true,  desc: "Para estabelecimentos em crescimento com mais movimento e demanda." },
-  max:   { label: "Pró Max",cor: "#4F8EF7", destaque: false, desc: "Para casas maiores que precisam do máximo de capacidade." },
-};
-
-const CHECK = (color: string) => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <circle cx="8" cy="8" r="8" fill={color} fillOpacity="0.15" />
-    <path d="M5 8L7 10L11 6" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-function getFeatures(plano: Plano) {
-  const tier = getTier(plano.nome);
-  const base = [
-    "Cardápio digital via QR Code",
-    "Pedidos em tempo real",
-    "Kanban para cozinha e atendimento",
-    "Fechamento de conta por mesa",
-    plano.max_mesas ? `Até ${plano.max_mesas} mesas simultâneas` : "Mesas ilimitadas",
-    plano.max_produtos ? `Até ${plano.max_produtos} produtos no cardápio` : "Produtos ilimitados",
-    "Suporte por e-mail",
-  ];
-  if (tier === "pro" || tier === "max") {
-    base.push("Relatórios e analytics avançados", "Controle de estoque", "Marketing e fidelidade", "Suporte prioritário");
-  }
-  if (tier === "max") {
-    base.push("Onboarding dedicado", "SLA de uptime garantido");
-  }
-  return base;
-}
 
 export default async function PlanosPage() {
   let planos: Plano[] = [];
@@ -87,8 +46,7 @@ export default async function PlanosPage() {
       <Navbar dark />
 
       {/* Hero */}
-      <section style={{ padding: "120px 24px 80px", textAlign: "center", position: "relative", overflow: "hidden", maxWidth: "100vw" }}>
-        {/* Glow */}
+      <section style={{ padding: "120px 24px 64px", textAlign: "center", position: "relative", overflow: "hidden", maxWidth: "100vw" }}>
         <div style={{
           position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
           width: 700, height: 350,
@@ -103,7 +61,7 @@ export default async function PlanosPage() {
             Escolha o plano ideal<br />para o seu estabelecimento
           </h1>
           <p style={{ fontSize: 18, color: "#888", maxWidth: 480, margin: "0 auto 20px" }}>
-            Todos os planos incluem 14 dias de trial gratuito. Sem cartão de crédito.
+            14 dias de trial gratuito em qualquer plano. Sem cartão de crédito.
           </p>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "8px 18px", background: "rgba(34,197,94,0.1)", border: "1px solid rgba(34,197,94,0.2)", borderRadius: 100 }}>
             <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#22C55E" }} />
@@ -114,84 +72,10 @@ export default async function PlanosPage() {
         </div>
       </section>
 
-      {/* Planos grid */}
+      {/* Seletor de período + planos (client component) */}
       <section style={{ padding: "0 24px 96px" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto" }}>
-          {planos.length === 0 ? (
-            <div style={{ textAlign: "center", padding: 64, color: "#555" }}>
-              <p>Não foi possível carregar os planos. Tente novamente em instantes.</p>
-            </div>
-          ) : (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 20 }}>
-              {planos.map((plano) => {
-                const tier = getTier(plano.nome);
-                const config = TIER_CONFIG[tier];
-                const features = getFeatures(plano);
-
-                return (
-                  <div key={plano.id} className={`plan-card${config.destaque ? " destaque" : ""}`}>
-                    {config.destaque && (
-                      <div style={{
-                        position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
-                        background: "#7C3AED", color: "#fff",
-                        fontSize: 11, fontWeight: 700, letterSpacing: "0.08em",
-                        padding: "5px 18px", borderRadius: "0 0 10px 10px",
-                      }}>
-                        MAIS POPULAR
-                      </div>
-                    )}
-
-                    <div style={{ paddingTop: config.destaque ? 16 : 0, marginBottom: 8 }}>
-                      <div style={{ fontSize: 11, fontWeight: 700, color: config.cor, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>
-                        {config.label}
-                      </div>
-                      <div style={{ fontSize: 15, fontWeight: 600, color: "#ffffff", marginBottom: 4 }}>
-                        {plano.nome}
-                      </div>
-                      <p style={{ fontSize: 13, color: "#666", lineHeight: 1.5, marginBottom: 20 }}>
-                        {plano.descricao || config.desc}
-                      </p>
-                    </div>
-
-                    <div style={{ marginBottom: 24 }}>
-                      <span style={{ fontSize: 40, fontWeight: 800, color: "#ffffff", letterSpacing: "-0.03em" }}>
-                        {fmtVal(plano.preco_mensal)}
-                      </span>
-                      <span style={{ fontSize: 14, color: "#666" }}>/mês</span>
-                      {plano.taxa_setup > 0 && (
-                        <div style={{ fontSize: 12, color: "#555", marginTop: 4 }}>
-                          + {fmtVal(plano.taxa_setup)} de setup (único)
-                        </div>
-                      )}
-                    </div>
-
-                    <Link
-                      href={`/assinar/${plano.id}`}
-                      style={{
-                        display: "block", width: "100%", padding: "13px",
-                        background: config.destaque ? "#7C3AED" : "#4F8EF7",
-                        color: "#fff", borderRadius: 12, fontWeight: 700, fontSize: 15,
-                        textAlign: "center", marginBottom: 24,
-                        boxShadow: config.destaque ? "0 4px 20px rgba(124,58,237,0.35)" : "0 4px 20px rgba(79,142,247,0.25)",
-                        transition: "opacity 0.15s",
-                      }}
-                    >
-                      Iniciar trial grátis →
-                    </Link>
-
-                    <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 20 }}>
-                      {features.map((f) => (
-                        <div key={f} style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 10 }}>
-                          {CHECK(config.cor)}
-                          <span style={{ fontSize: 13, color: "#888", lineHeight: 1.5 }}>{f}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
+          <PlanosClient planos={planos} />
         </div>
       </section>
 

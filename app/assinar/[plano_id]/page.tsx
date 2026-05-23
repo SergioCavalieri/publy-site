@@ -3,7 +3,7 @@
 // Metadata é definido via generateMetadata no servidor
 // Esta é uma página client-side — o título é definido dinamicamente
 import { useState, useEffect } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -11,9 +11,6 @@ import PublyLogo from "@/components/PublyLogo";
 import type { Plano } from "@/lib/api";
 
 const UF_LIST = ["","AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"];
-
-const fmtVal = (v: number) =>
-  Number(v).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
@@ -24,9 +21,32 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
+type Periodo = "mensal" | "anual" | "bienal";
+
+const PERIODO_LABELS: Record<Periodo, string> = {
+  mensal: "Mensal",
+  anual:  "Anual (12 meses)",
+  bienal: "Bienal (24 meses)",
+};
+
+const fmtVal2 = (v: number) =>
+  Number(v).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
+function getPrecoEfetivo(plano: Plano, periodo: Periodo): number {
+  if (periodo === "anual")  return Number(plano.preco_anual  ?? plano.preco_mensal);
+  if (periodo === "bienal") return Number(plano.preco_bienal ?? plano.preco_mensal);
+  return Number(plano.preco_mensal);
+}
+
 export default function AssinarPage() {
   const { plano_id } = useParams<{ plano_id: string }>();
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const periodoParam = (searchParams.get("periodo") || "mensal") as Periodo;
+  const [periodo] = useState<Periodo>(
+    ["mensal","anual","bienal"].includes(periodoParam) ? periodoParam : "mensal"
+  );
 
   const [plano, setPlano] = useState<Plano | null>(null);
   const [loading, setLoading] = useState(true);
@@ -84,7 +104,7 @@ export default function AssinarPage() {
       const res = await fetch(`${url}/api/v1/public/checkout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, plano_id: Number(plano_id), trial_dias: 14 }),
+        body: JSON.stringify({ ...form, plano_id: Number(plano_id), periodo, trial_dias: 14 }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.detail || "Erro ao processar cadastro");
@@ -246,23 +266,45 @@ export default function AssinarPage() {
           {/* ── Resumo do plano ── */}
           <div style={{ position: "sticky", top: 90 }}>
             <div style={{
-              background: "#0F0F0F", borderRadius: 20, padding: 28,
-              border: "1px solid rgba(255,255,255,0.07)",
+              background: "#141414", borderRadius: 20, padding: 28,
+              border: "1px solid rgba(255,255,255,0.08)",
               color: "#fff", marginBottom: 16,
             }}>
               <div style={{ fontSize: 11, color: "#555", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 4 }}>Plano selecionado</div>
-              <div style={{ fontSize: 20, fontWeight: 800, marginBottom: 4 }}>{plano.nome}</div>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 4, marginBottom: 20 }}>
-                <span style={{ fontSize: 36, fontWeight: 800, color: "#4F8EF7" }}>{fmtVal(plano.preco_mensal)}</span>
+              <div style={{ fontSize: 20, fontWeight: 800, marginBottom: 2 }}>{plano.nome}</div>
+
+              {/* Badge de período */}
+              <div style={{
+                display: "inline-flex", alignItems: "center", gap: 6,
+                padding: "4px 10px", marginBottom: 16,
+                background: "rgba(79,142,247,0.1)", border: "1px solid rgba(79,142,247,0.2)",
+                borderRadius: 100,
+              }}>
+                <span style={{ fontSize: 11, color: "#4F8EF7", fontWeight: 700 }}>
+                  {PERIODO_LABELS[periodo]}
+                </span>
+              </div>
+
+              {/* Preço */}
+              <div style={{ display: "flex", alignItems: "baseline", gap: 4, marginBottom: 4 }}>
+                <span style={{ fontSize: 36, fontWeight: 800, color: "#4F8EF7" }}>
+                  {fmtVal2(getPrecoEfetivo(plano, periodo))}
+                </span>
                 <span style={{ fontSize: 14, color: "#666" }}>/mês</span>
               </div>
+              {periodo !== "mensal" && getPrecoEfetivo(plano, periodo) < Number(plano.preco_mensal) && (
+                <div style={{ fontSize: 12, color: "#22c55e", marginBottom: 16 }}>
+                  Você economiza {fmtVal2((Number(plano.preco_mensal) - getPrecoEfetivo(plano, periodo)) * (periodo === "anual" ? 12 : 24))} no total
+                </div>
+              )}
 
               <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 20 }}>
                 {[
                   ["Trial gratuito", "14 dias"],
+                  ["Período", PERIODO_LABELS[periodo]],
                   ["Mesas", plano.max_mesas ? `Até ${plano.max_mesas}` : "Ilimitadas"],
                   ["Produtos", plano.max_produtos ? `Até ${plano.max_produtos}` : "Ilimitados"],
-                  ...(plano.taxa_setup > 0 ? [["Setup (único)", fmtVal(plano.taxa_setup)]] : []),
+                  ...(plano.taxa_setup > 0 ? [["Setup (único)", fmtVal2(Number(plano.taxa_setup))]] : []),
                 ].map(([k, v]) => (
                   <div key={k} style={{ display: "flex", justifyContent: "space-between", padding: "8px 0", borderBottom: "1px solid rgba(255,255,255,0.05)", fontSize: 13 }}>
                     <span style={{ color: "#666" }}>{k}</span>
@@ -273,7 +315,7 @@ export default function AssinarPage() {
             </div>
 
             <Link href="/planos" style={{ display: "block", textAlign: "center", fontSize: 13, color: "#555", padding: "8px", transition: "color 0.15s" }}>
-              ← Trocar plano
+              ← Trocar plano ou período
             </Link>
 
             {/* Selos */}
