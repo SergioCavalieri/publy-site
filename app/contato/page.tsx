@@ -26,10 +26,10 @@ function Field({ label, required, children }: { label: string; required?: boolea
   );
 }
 
-const INPUT = {
+const INPUT_BASE = {
   width: "100%", padding: "13px 16px",
-  background: "#fff", border: "1.5px solid #E0DCD4",
-  borderRadius: 10, fontSize: 14, color: "#0F0F0F",
+  background: "#1a1a1a", border: "1.5px solid rgba(255,255,255,0.1)",
+  borderRadius: 10, fontSize: 14, color: "#e8e8e8",
   outline: "none", transition: "border-color 0.15s, box-shadow 0.15s",
   fontFamily: "inherit",
 } as React.CSSProperties;
@@ -49,9 +49,9 @@ export default function ContatoPage() {
   const set = (k: keyof typeof form, v: string) => setForm((f) => ({ ...f, [k]: v }));
 
   const inputStyle = (field: string) => ({
-    ...INPUT,
-    borderColor: focado === field ? "#4F8EF7" : "#E0DCD4",
-    boxShadow: focado === field ? "0 0 0 3px rgba(79,142,247,0.12)" : "none",
+    ...INPUT_BASE,
+    borderColor: focado === field ? "#4F8EF7" : "rgba(255,255,255,0.1)",
+    boxShadow: focado === field ? "0 0 0 3px rgba(79,142,247,0.15)" : "none",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -77,37 +77,44 @@ export default function ContatoPage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar dark />
 
       {/* Hero */}
-      <div style={{ background: "#0F0F0F", padding: "100px 24px 56px" }}>
-        <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
+      <div style={{ padding: "100px 24px 56px", position: "relative", overflow: "hidden" }}>
+        {/* Glow */}
+        <div style={{
+          position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)",
+          width: 700, height: 300,
+          background: "radial-gradient(ellipse at 50% 0%, rgba(79,142,247,0.10) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }} />
+        <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center", position: "relative" }}>
           <div style={{ fontSize: 11, fontWeight: 700, color: "#4F8EF7", textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 14 }}>
             Fale conosco
           </div>
-          <h1 style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: 16 }}>
+          <h1 style={{ fontSize: "clamp(28px,4vw,48px)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.02em", marginBottom: 16 }}>
             Como podemos ajudar?
           </h1>
-          <p style={{ fontSize: 17, color: "#666", lineHeight: 1.7 }}>
+          <p style={{ fontSize: 17, color: "#888", lineHeight: 1.7 }}>
             Tem dúvidas sobre o Publy, precisa de suporte ou quer conhecer melhor o sistema? Nos escreva — respondemos rápido.
           </p>
         </div>
       </div>
 
-      <div style={{ background: "#F2F0EB", padding: "56px 24px 80px" }}>
+      <div style={{ padding: "0 24px 80px" }}>
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
 
           {/* Cards de info */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, marginBottom: 48 }}>
             {INFO_CARDS.map(({ icon, title, desc, sub }) => (
               <div key={title} style={{
-                background: "#fff", borderRadius: 16, padding: "24px 20px",
-                border: "1px solid #E0DCD4", textAlign: "center",
+                background: "#141414", borderRadius: 16, padding: "24px 20px",
+                border: "1px solid rgba(255,255,255,0.08)", textAlign: "center",
               }}>
                 <div style={{ fontSize: 28, marginBottom: 12 }}>{icon}</div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: "#aaa", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>{title}</div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: "#0F0F0F", marginBottom: 4 }}>{desc}</div>
-                <div style={{ fontSize: 12, color: "#888" }}>{sub}</div>
+                <div style={{ fontSize: 12, fontWeight: 700, color: "#555", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>{title}</div>
+                <div style={{ fontSize: 15, fontWeight: 700, color: "#ffffff", marginBottom: 4 }}>{desc}</div>
+                <div style={{ fontSize: 12, color: "#666" }}>{sub}</div>
               </div>
             ))}
           </div>
@@ -116,23 +123,27 @@ export default function ContatoPage() {
           <div style={{ display: "grid", gridTemplateColumns: "1fr 340px", gap: 32, alignItems: "start" }}>
 
             {/* ── Formulário ── */}
-            <div style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", border: "1px solid #E0DCD4", boxShadow: "0 4px 24px rgba(0,0,0,0.05)" }}>
-              <h2 style={{ fontSize: 20, fontWeight: 800, color: "#0F0F0F", marginBottom: 6 }}>Envie sua mensagem</h2>
-              <p style={{ fontSize: 14, color: "#888", marginBottom: 32 }}>Todos os campos marcados com * são obrigatórios.</p>
+            <div style={{
+              background: "#141414", borderRadius: 20, padding: "40px 36px",
+              border: "1px solid rgba(255,255,255,0.08)",
+              boxShadow: "0 4px 40px rgba(0,0,0,0.4)",
+            }}>
+              <h2 style={{ fontSize: 20, fontWeight: 800, color: "#ffffff", marginBottom: 6 }}>Envie sua mensagem</h2>
+              <p style={{ fontSize: 14, color: "#666", marginBottom: 32 }}>Todos os campos marcados com * são obrigatórios.</p>
 
               {resultado && (
                 <div style={{
                   padding: "16px 20px", borderRadius: 12, marginBottom: 24,
                   background: resultado.ok ? "rgba(34,197,94,0.08)" : "rgba(239,68,68,0.08)",
-                  border: `1px solid ${resultado.ok ? "rgba(34,197,94,0.25)" : "rgba(239,68,68,0.25)"}`,
+                  border: `1px solid ${resultado.ok ? "rgba(34,197,94,0.2)" : "rgba(239,68,68,0.2)"}`,
                   display: "flex", alignItems: "flex-start", gap: 12,
                 }}>
                   <span style={{ fontSize: 20, lineHeight: 1 }}>{resultado.ok ? "✅" : "❌"}</span>
                   <div>
-                    <div style={{ fontSize: 14, fontWeight: 600, color: resultado.ok ? "#16a34a" : "#dc2626", marginBottom: 4 }}>
+                    <div style={{ fontSize: 14, fontWeight: 600, color: resultado.ok ? "#22c55e" : "#ef4444", marginBottom: 4 }}>
                       {resultado.ok ? "Mensagem enviada!" : "Erro ao enviar"}
                     </div>
-                    <div style={{ fontSize: 13, color: resultado.ok ? "#166534" : "#991b1b" }}>{resultado.msg}</div>
+                    <div style={{ fontSize: 13, color: resultado.ok ? "#86efac" : "#fca5a5" }}>{resultado.msg}</div>
                   </div>
                 </div>
               )}
@@ -174,7 +185,7 @@ export default function ContatoPage() {
                   </Field>
                   <Field label="Assunto">
                     <select
-                      style={inputStyle("assunto")}
+                      style={{ ...inputStyle("assunto"), appearance: "none" as const }}
                       value={form.assunto}
                       onChange={(e) => set("assunto", e.target.value)}
                       onFocus={() => setFocado("assunto")}
@@ -212,7 +223,7 @@ export default function ContatoPage() {
                   ) : "Enviar mensagem →"}
                 </button>
 
-                <p style={{ fontSize: 12, color: "#aaa", textAlign: "center", marginTop: 12 }}>
+                <p style={{ fontSize: 12, color: "#555", textAlign: "center", marginTop: 12 }}>
                   Ao enviar, você concorda com nossa{" "}
                   <Link href="/privacidade" style={{ color: "#4F8EF7" }}>Política de Privacidade</Link>.
                 </p>
@@ -223,8 +234,12 @@ export default function ContatoPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
 
               {/* Trial CTA */}
-              <div style={{ background: "#0F0F0F", borderRadius: 20, padding: 28, border: "1px solid rgba(255,255,255,0.07)" }}>
-                <div style={{ fontSize: 18, fontWeight: 800, color: "#fff", marginBottom: 10, lineHeight: 1.3 }}>
+              <div style={{
+                background: "rgba(79,142,247,0.08)",
+                borderRadius: 20, padding: 28,
+                border: "1px solid rgba(79,142,247,0.2)",
+              }}>
+                <div style={{ fontSize: 18, fontWeight: 800, color: "#ffffff", marginBottom: 10, lineHeight: 1.3 }}>
                   Quer experimentar antes de entrar em contato?
                 </div>
                 <p style={{ fontSize: 13, color: "#666", lineHeight: 1.6, marginBottom: 20 }}>
@@ -236,17 +251,17 @@ export default function ContatoPage() {
               </div>
 
               {/* FAQ rápido */}
-              <div style={{ background: "#fff", borderRadius: 20, padding: 24, border: "1px solid #E0DCD4" }}>
-                <div style={{ fontSize: 13, fontWeight: 700, color: "#0F0F0F", marginBottom: 16 }}>Respostas rápidas</div>
+              <div style={{ background: "#141414", borderRadius: 20, padding: 24, border: "1px solid rgba(255,255,255,0.08)" }}>
+                <div style={{ fontSize: 13, fontWeight: 700, color: "#ffffff", marginBottom: 16 }}>Respostas rápidas</div>
                 {[
                   ["Quanto custa?", "A partir de R$39,90/mês. Veja os planos →", "/planos"],
                   ["Tem contrato?", "Não. Assinatura mensal sem fidelidade.", null],
                   ["Funciona no celular?", "Sim, 100% responsivo.", null],
                   ["Preciso instalar algo?", "Não. Tudo pelo navegador.", null],
                 ].map(([p, r, link]) => (
-                  <div key={p as string} style={{ marginBottom: 14, paddingBottom: 14, borderBottom: "1px solid #F0EDE8" }}>
-                    <div style={{ fontSize: 12, fontWeight: 700, color: "#0F0F0F", marginBottom: 4 }}>{p}</div>
-                    <div style={{ fontSize: 12, color: "#888" }}>
+                  <div key={p as string} style={{ marginBottom: 14, paddingBottom: 14, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: "#e8e8e8", marginBottom: 4 }}>{p}</div>
+                    <div style={{ fontSize: 12, color: "#666" }}>
                       {link
                         ? <Link href={link as string} style={{ color: "#4F8EF7" }}>{r}</Link>
                         : r}
@@ -263,6 +278,7 @@ export default function ContatoPage() {
 
       <style>{`
         @keyframes spin { to { transform: rotate(360deg); } }
+        select option { background: #1a1a1a; }
       `}</style>
     </>
   );

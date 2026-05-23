@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 };
 
 const P = ({ children }: { children: React.ReactNode }) => (
-  <p style={{ marginBottom: 12 }}>{children}</p>
+  <p style={{ marginBottom: 12, color: "#888" }}>{children}</p>
 );
 const Li = ({ children }: { children: React.ReactNode }) => (
-  <li style={{ marginBottom: 6, paddingLeft: 4 }}>{children}</li>
+  <li style={{ marginBottom: 6, paddingLeft: 4, color: "#888" }}>{children}</li>
 );
 
 export default function TermosPage() {

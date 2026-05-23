@@ -98,7 +98,7 @@ export default function AssinarPage() {
 
   if (loading) {
     return (
-      <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#F2F0EB" }}>
+      <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <PublyLogo size={14} gap={4} animated />
       </div>
     );
@@ -106,8 +106,8 @@ export default function AssinarPage() {
 
   if (!plano) {
     return (
-      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", background: "#F2F0EB", gap: 16 }}>
-        <p style={{ fontSize: 18, color: "#666" }}>Plano não encontrado.</p>
+      <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 16 }}>
+        <p style={{ fontSize: 18, color: "#888" }}>Plano não encontrado.</p>
         <Link href="/planos" className="btn-primary">Ver planos disponíveis</Link>
       </div>
     );
@@ -115,16 +115,20 @@ export default function AssinarPage() {
 
   return (
     <>
-      <Navbar />
-      <div style={{ minHeight: "100vh", background: "#F2F0EB", padding: "100px 24px 64px" }}>
+      <Navbar dark />
+      <div style={{ minHeight: "100vh", padding: "100px 24px 64px" }}>
         <div style={{ maxWidth: 960, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 380px", gap: 32, alignItems: "start" }}>
 
           {/* ── Formulário ── */}
-          <div style={{ background: "#fff", borderRadius: 20, padding: "40px 36px", border: "1px solid #E0DCD4", boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
-            <h1 style={{ fontSize: 26, fontWeight: 800, color: "#0F0F0F", marginBottom: 6 }}>
+          <div style={{
+            background: "#141414", borderRadius: 20, padding: "40px 36px",
+            border: "1px solid rgba(255,255,255,0.08)",
+            boxShadow: "0 4px 40px rgba(0,0,0,0.4)",
+          }}>
+            <h1 style={{ fontSize: 26, fontWeight: 800, color: "#ffffff", marginBottom: 6 }}>
               Criar conta gratuita
             </h1>
-            <p style={{ fontSize: 14, color: "#888", marginBottom: 32 }}>
+            <p style={{ fontSize: 14, color: "#666", marginBottom: 32 }}>
               14 dias de trial grátis · Sem cartão de crédito
             </p>
 
@@ -148,7 +152,7 @@ export default function AssinarPage() {
               </div>
 
               {/* Empresa */}
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#4F8EF7", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16, marginTop: 8, borderTop: "1px solid #F0EDE8", paddingTop: 20 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#4F8EF7", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16, marginTop: 8, borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 20 }}>
                 Dados do estabelecimento
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
@@ -166,7 +170,7 @@ export default function AssinarPage() {
               </div>
 
               {/* Endereço */}
-              <div style={{ fontSize: 11, fontWeight: 700, color: "#4F8EF7", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16, marginTop: 8, borderTop: "1px solid #F0EDE8", paddingTop: 20 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#4F8EF7", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16, marginTop: 8, borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 20 }}>
                 Endereço do estabelecimento
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
@@ -215,7 +219,7 @@ export default function AssinarPage() {
                     </svg>
                   )}
                 </div>
-                <span style={{ fontSize: 13, color: "#666", lineHeight: 1.5 }}>
+                <span style={{ fontSize: 13, color: "#888", lineHeight: 1.5 }}>
                   Concordo com os{" "}
                   <Link href="/termos" style={{ color: "#4F8EF7" }} target="_blank">Termos de Uso</Link>
                   {" "}e{" "}
@@ -233,7 +237,7 @@ export default function AssinarPage() {
                 {enviando ? "Criando sua conta..." : "Iniciar 14 dias grátis →"}
               </button>
 
-              <p style={{ fontSize: 12, color: "#aaa", textAlign: "center", marginTop: 12 }}>
+              <p style={{ fontSize: 12, color: "#555", textAlign: "center", marginTop: 12 }}>
                 Sem cartão de crédito · Cancele quando quiser
               </p>
             </form>
@@ -268,14 +272,14 @@ export default function AssinarPage() {
               </div>
             </div>
 
-            <Link href="/planos" style={{ display: "block", textAlign: "center", fontSize: 13, color: "#888", padding: "8px", transition: "color 0.15s" }}>
+            <Link href="/planos" style={{ display: "block", textAlign: "center", fontSize: 13, color: "#555", padding: "8px", transition: "color 0.15s" }}>
               ← Trocar plano
             </Link>
 
             {/* Selos */}
             <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 20 }}>
               {["🔒 Dados criptografados com SSL", "✓ Sem fidelidade — cancele quando quiser", "💬 Suporte em português"].map((s) => (
-                <div key={s} style={{ fontSize: 12, color: "#888", display: "flex", alignItems: "center", gap: 8 }}>
+                <div key={s} style={{ fontSize: 12, color: "#555", display: "flex", alignItems: "center", gap: 8 }}>
                   {s}
                 </div>
               ))}

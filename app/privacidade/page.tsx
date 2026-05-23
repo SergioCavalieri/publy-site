@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 };
 
 const P = ({ children }: { children: React.ReactNode }) => (
-  <p style={{ marginBottom: 12 }}>{children}</p>
+  <p style={{ marginBottom: 12, color: "#888" }}>{children}</p>
 );
 const Li = ({ children }: { children: React.ReactNode }) => (
-  <li style={{ marginBottom: 6, paddingLeft: 4 }}>{children}</li>
+  <li style={{ marginBottom: 6, paddingLeft: 4, color: "#888" }}>{children}</li>
 );
 const Tag = ({ children }: { children: React.ReactNode }) => (
   <span style={{ display: "inline-block", background: "rgba(79,142,247,0.10)", border: "1px solid rgba(79,142,247,0.2)", borderRadius: 6, padding: "2px 9px", fontSize: 12, color: "#4F8EF7", fontWeight: 600, margin: "2px 4px 2px 0" }}>
