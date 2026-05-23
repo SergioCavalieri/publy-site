@@ -1,5 +1,7 @@
 "use client";
 
+// Metadata é definido via generateMetadata no servidor
+// Esta é uma página client-side — o título é definido dinamicamente
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";

@@ -1,36 +1,39 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PublyLogo from "@/components/PublyLogo";
+import FeatureIcon from "@/components/FeatureIcon";
+import { SITE_URL, softwareApplicationSchema, organizationSchema } from "@/lib/seo";
 
 const FEATURES = [
   {
-    icon: "📱",
+    icon: "qrcode",
     title: "QR Code por mesa",
     desc: "Cada mesa tem seu próprio QR Code. O cliente escaneia, vê o cardápio e faz o pedido direto pelo celular — sem app, sem fila.",
   },
   {
-    icon: "🗂️",
+    icon: "kanban",
     title: "Kanban em tempo real",
     desc: "Pedidos organizados em colunas: Novo → Preparando → Pronto. Sua equipe sempre sabe o que fazer.",
   },
   {
-    icon: "💳",
+    icon: "conta",
     title: "Fechamento de conta",
     desc: "Feche contas por mesa, gere totais, registre formas de pagamento e divida entre pessoas com facilidade.",
   },
   {
-    icon: "📊",
+    icon: "analytics",
     title: "Analytics e relatórios",
     desc: "Veja o que mais vende, horários de pico, ticket médio e evolução da receita. Tudo em gráficos claros.",
   },
   {
-    icon: "🍺",
+    icon: "cardapio",
     title: "Cardápio digital",
     desc: "Cadastre produtos, categorias, fotos e preços. Ative ou desative itens instantaneamente.",
   },
   {
-    icon: "🔔",
+    icon: "notificacao",
     title: "Notificações push",
     desc: "Garçons e cozinha recebem alertas sonoros a cada novo pedido. Nada passa despercebido.",
   },
@@ -42,9 +45,28 @@ const STEPS = [
   { num: "03", title: "Abra e gerencie", desc: "Clientes pedem pelo celular. Você acompanha tudo no painel em tempo real." },
 ];
 
+export const metadata: Metadata = {
+  title: "Publy — Sistema de pedidos para bares e pubs",
+  description:
+    "Autoatendimento via QR Code, kanban em tempo real e gestão completa para bares, pubs e restaurantes. Comece grátis por 14 dias, sem cartão de crédito.",
+  alternates: { canonical: SITE_URL },
+  openGraph: {
+    title: "Publy — Sistema de pedidos para bares e pubs",
+    description: "QR Code por mesa, kanban para a cozinha, fechamento de conta e analytics. 14 dias grátis.",
+    url: SITE_URL,
+    type: "website",
+  },
+};
+
+const jsonLd = [softwareApplicationSchema(), organizationSchema()];
+
 export default function HomePage() {
   return (
     <>
+      {/* JSON-LD Structured Data */}
+      {jsonLd.map((schema, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      ))}
       <Navbar dark />
 
       {/* ── Hero ─────────────────────────────────── */}
@@ -206,15 +228,16 @@ export default function HomePage() {
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 24 }}>
             {FEATURES.map(({ icon, title, desc }, i) => (
-              <div key={title} className={`fade-up-${(i % 4) + 1}`} style={{
-                background: "#F9F8F5",
-                border: "1px solid #E8E4DC",
-                borderRadius: 16, padding: "28px 24px",
-                transition: "transform 0.2s, box-shadow 0.2s",
+              <div key={title} className={`fade-up-${(i % 4) + 1} feature-card`} style={{
+                background: "#FFFFFF",
+                border: "1px solid #EAE6DF",
+                borderRadius: 20, padding: "32px 28px",
               }}>
-                <div style={{ fontSize: 32, marginBottom: 16 }}>{icon}</div>
-                <h3 style={{ fontSize: 17, fontWeight: 700, color: "#0F0F0F", marginBottom: 10 }}>{title}</h3>
-                <p style={{ fontSize: 14, color: "#666", lineHeight: 1.7 }}>{desc}</p>
+                <div style={{ marginBottom: 20 }}>
+                  <FeatureIcon name={icon} size={52} />
+                </div>
+                <h3 style={{ fontSize: 17, fontWeight: 700, color: "#0F0F0F", marginBottom: 10, letterSpacing: "-0.01em" }}>{title}</h3>
+                <p style={{ fontSize: 14, color: "#666", lineHeight: 1.75 }}>{desc}</p>
               </div>
             ))}
           </div>

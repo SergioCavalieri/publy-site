@@ -1,7 +1,28 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { getPlanos, type Plano } from "@/lib/api";
+import { SITE_URL, faqSchema, breadcrumbSchema } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "Planos e preços",
+  description:
+    "Escolha o plano ideal para o seu bar ou pub. A partir de R$39,90/mês com 14 dias grátis, sem cartão de crédito.",
+  alternates: { canonical: `${SITE_URL}/planos` },
+  openGraph: {
+    title: "Planos e preços | Publy",
+    description: "Planos a partir de R$39,90/mês. 14 dias grátis, sem cartão.",
+    url: `${SITE_URL}/planos`,
+  },
+};
+
+const FAQ_ITEMS = [
+  { question: "Preciso de cartão de crédito para o trial?", answer: "Não. O trial de 14 dias é totalmente gratuito. Você só fornece os dados de pagamento ao final do período, se quiser continuar." },
+  { question: "Posso mudar de plano depois?", answer: "Sim, a qualquer momento. O ajuste é proporcional ao período restante do mês." },
+  { question: "Como funciona o cancelamento?", answer: "Cancele quando quiser pelo painel, sem multa. O acesso permanece até o fim do período pago." },
+  { question: "O sistema roda em tablet e celular?", answer: "Sim. O painel admin funciona em qualquer dispositivo moderno. O cardápio do cliente é 100% mobile." },
+];
 
 const fmtVal = (v: number) =>
   Number(v).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
@@ -54,8 +75,16 @@ export default async function PlanosPage() {
     // fallback silencioso — mostrará mensagem de erro
   }
 
+  const faqJsonLd  = faqSchema(FAQ_ITEMS);
+  const breadJsonLd = breadcrumbSchema([
+    { name: "Home", url: SITE_URL },
+    { name: "Planos", url: `${SITE_URL}/planos` },
+  ]);
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadJsonLd) }} />
       <Navbar />
 
       {/* Hero */}
@@ -164,18 +193,13 @@ export default async function PlanosPage() {
           <h2 style={{ fontSize: 32, fontWeight: 800, color: "#0F0F0F", marginBottom: 40, textAlign: "center" }}>
             Perguntas frequentes
           </h2>
-          {[
-            ["Preciso de cartão de crédito para o trial?", "Não. O trial de 14 dias é totalmente gratuito. Você só fornece os dados de pagamento ao final do período, se quiser continuar."],
-            ["Posso mudar de plano depois?", "Sim, a qualquer momento. O ajuste é proporcional ao período restante do mês."],
-            ["Como funciona o cancelamento?", "Cancele quando quiser pelo painel, sem multa. O acesso permanece até o fim do período pago."],
-            ["O sistema roda em tablet e celular?", "Sim. O painel admin funciona em qualquer dispositivo moderno. O cardápio do cliente é 100% mobile."],
-          ].map(([q, a]) => (
-            <details key={q as string} style={{ borderBottom: "1px solid #E8E4DC", padding: "20px 0" }}>
+          {FAQ_ITEMS.map(({ question, answer }) => (
+            <details key={question} style={{ borderBottom: "1px solid #E8E4DC", padding: "20px 0" }}>
               <summary style={{ fontSize: 16, fontWeight: 600, color: "#0F0F0F", cursor: "pointer", listStyle: "none", display: "flex", justifyContent: "space-between" }}>
-                {q}
+                {question}
                 <span style={{ color: "#4F8EF7", fontSize: 20, lineHeight: 1 }}>+</span>
               </summary>
-              <p style={{ fontSize: 14, color: "#666", marginTop: 12, lineHeight: 1.7 }}>{a}</p>
+              <p style={{ fontSize: 14, color: "#666", marginTop: 12, lineHeight: 1.7 }}>{answer}</p>
             </details>
           ))}
         </div>

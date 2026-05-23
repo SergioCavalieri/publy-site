@@ -1,25 +1,33 @@
 import type { Metadata } from "next";
+import { DM_Sans, DM_Mono } from "next/font/google";
+import { baseMetadata } from "@/lib/seo";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "Publy — Sistema de pedidos para bares e pubs",
-  description: "Autoatendimento via QR Code, controle de mesas, pedidos em tempo real e gestão completa para o seu estabelecimento.",
-  openGraph: {
-    title: "Publy — Sistema de pedidos para bares e pubs",
-    description: "Autoatendimento via QR Code, controle de mesas e gestão completa.",
-    type: "website",
-  },
-};
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
+export const metadata: Metadata = baseMetadata;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={`${dmSans.variable} ${dmMono.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Favicon SVG com fundo transparente */}
         <link
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=DM+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
+          rel="icon"
+          type="image/svg+xml"
+          href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect x='16' y='8' width='20' height='20' rx='4' fill='%234F8EF7' opacity='1'/%3E%3Crect x='42' y='8' width='20' height='20' rx='4' fill='%234F8EF7' opacity='0.45'/%3E%3Crect x='16' y='32' width='20' height='20' rx='4' fill='%234F8EF7' opacity='0.45'/%3E%3Crect x='42' y='32' width='20' height='20' rx='4' fill='%234F8EF7' opacity='1'/%3E%3Crect x='16' y='56' width='20' height='20' rx='4' fill='%234F8EF7' opacity='1'/%3E%3Crect x='42' y='56' width='20' height='20' rx='4' fill='%234F8EF7' opacity='0.2'/%3E%3C/svg%3E"
         />
       </head>
       <body>{children}</body>

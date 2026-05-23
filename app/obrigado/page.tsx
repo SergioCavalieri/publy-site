@@ -1,5 +1,6 @@
 "use client";
 
+// Página de confirmação — não deve ser indexada
 import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
