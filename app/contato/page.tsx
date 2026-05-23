@@ -34,10 +34,33 @@ const INPUT_BASE = {
   fontFamily: "inherit",
 } as React.CSSProperties;
 
+const C = "#4F8EF7";
+
+const ICON_EMAIL = (
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+    <rect x="2" y="4" width="18" height="14" rx="2.5" stroke={C} strokeWidth="1.7" fill="none"/>
+    <path d="M2 7.5l9 5.5 9-5.5" stroke={C} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const ICON_SUPORTE = (
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+    <path d="M4 7.5C4 5.015 6.239 3 9 3h4c2.761 0 5 2.015 5 4.5v3C18 12.985 15.761 15 13 15H9.5L5.5 18.5V15H5C4.448 15 4 14.552 4 14V7.5z" stroke={C} strokeWidth="1.7" fill={C} fillOpacity="0.1" strokeLinejoin="round"/>
+    <path d="M8 8.5h6M8 11.5h4" stroke={C} strokeWidth="1.7" strokeLinecap="round"/>
+  </svg>
+);
+
+const ICON_HORARIO = (
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+    <circle cx="11" cy="11" r="8" stroke={C} strokeWidth="1.7" fill={C} fillOpacity="0.1"/>
+    <path d="M11 7v4.5l3 2" stroke={C} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
 const INFO_CARDS = [
-  { icon: "✉️", title: "E-mail", desc: "contato@publy.app", sub: "Respondemos em até 24h úteis" },
-  { icon: "💬", title: "Suporte", desc: "suporte@publy.app", sub: "Para clientes com assinatura ativa" },
-  { icon: "🕐", title: "Horário", desc: "Seg–Sex, 9h às 18h", sub: "Horário de Brasília (GMT-3)" },
+  { icon: ICON_EMAIL,   title: "E-mail",  desc: "contato@publy.app",  sub: "Respondemos em até 24h úteis" },
+  { icon: ICON_SUPORTE, title: "Suporte", desc: "suporte@publy.app",   sub: "Para clientes com assinatura ativa" },
+  { icon: ICON_HORARIO, title: "Horário", desc: "Seg–Sex, 9h às 18h", sub: "Horário de Brasília (GMT-3)" },
 ];
 
 export default function ContatoPage() {
@@ -108,11 +131,21 @@ export default function ContatoPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, marginBottom: 48 }}>
             {INFO_CARDS.map(({ icon, title, desc, sub }) => (
               <div key={title} style={{
-                background: "#141414", borderRadius: 16, padding: "24px 20px",
+                background: "#141414", borderRadius: 16, padding: "28px 20px",
                 border: "1px solid rgba(255,255,255,0.08)", textAlign: "center",
               }}>
-                <div style={{ fontSize: 28, marginBottom: 12 }}>{icon}</div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: "#555", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>{title}</div>
+                {/* Ícone no padrão Publy */}
+                <div style={{ display: "flex", justifyContent: "center", marginBottom: 16 }}>
+                  <div style={{
+                    width: 52, height: 52, borderRadius: 14,
+                    background: "rgba(79,142,247,0.10)",
+                    border: "1px solid rgba(79,142,247,0.18)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                  }}>
+                    {icon}
+                  </div>
+                </div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#555", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>{title}</div>
                 <div style={{ fontSize: 15, fontWeight: 700, color: "#ffffff", marginBottom: 4 }}>{desc}</div>
                 <div style={{ fontSize: 12, color: "#666" }}>{sub}</div>
               </div>
