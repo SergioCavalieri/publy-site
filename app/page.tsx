@@ -60,6 +60,307 @@ export const metadata: Metadata = {
 
 const jsonLd = [softwareApplicationSchema(), organizationSchema()];
 
+/* ─────────────────────────────────────────────────────────────────────────── */
+/*  Sub-componentes inline (sem arquivo separado para não complicar o build)  */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+/** Mock fiel ao visual real da MesaPage no mobile */
+function PhoneMockMesa() {
+  return (
+    <div style={{
+      position: "relative",
+      width: 280,
+      margin: "0 auto",
+      filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.7))",
+    }}>
+      {/* Chassis do celular */}
+      <div style={{
+        background: "linear-gradient(160deg, #2a2a2a 0%, #111 100%)",
+        borderRadius: 44,
+        padding: "12px 8px",
+        border: "2px solid rgba(255,255,255,0.12)",
+        boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.05)",
+        position: "relative",
+      }}>
+        {/* Dynamic island */}
+        <div style={{
+          position: "absolute", top: 18, left: "50%", transform: "translateX(-50%)",
+          width: 100, height: 26, borderRadius: 13,
+          background: "#000",
+          zIndex: 10,
+          display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
+        }}>
+          <div style={{ width: 10, height: 10, borderRadius: "50%", background: "#1a1a1a", border: "1.5px solid #333" }} />
+        </div>
+
+        {/* Tela */}
+        <div style={{
+          background: "#0c0c0c",
+          borderRadius: 36,
+          overflow: "hidden",
+          height: 580,
+          position: "relative",
+          display: "flex", flexDirection: "column",
+        }}>
+          {/* Status bar */}
+          <div style={{ height: 50, background: "#0c0c0c", flexShrink: 0 }} />
+
+          {/* Conteúdo da MesaPage */}
+          <div style={{
+            flex: 1,
+            display: "flex", flexDirection: "column", alignItems: "center",
+            padding: "20px 24px 32px",
+            background: "#0c0c0c",
+            overflowY: "hidden",
+          }}>
+            {/* Logo Publy */}
+            <div style={{ marginBottom: 28 }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(2,10px)", gap: 3, margin: "0 auto 4px" }}>
+                {[1, 0.45, 0.45, 1, 1, 0.2].map((op, i) => (
+                  <div key={i} style={{ width: 10, height: 10, borderRadius: 2.5, background: "#4F8EF7", opacity: op }} />
+                ))}
+              </div>
+              <div style={{ fontSize: 11, fontWeight: 300, color: "#fff", letterSpacing: "0.16em", textTransform: "uppercase", textAlign: "center", marginTop: 4 }}>
+                PUBLY
+              </div>
+            </div>
+
+            {/* Mesa badge */}
+            <div style={{
+              background: "rgba(79,142,247,0.15)",
+              border: "1px solid rgba(79,142,247,0.3)",
+              borderRadius: 100, padding: "4px 14px", marginBottom: 12,
+            }}>
+              <span style={{ fontSize: 10, color: "#4F8EF7", fontWeight: 700, letterSpacing: "0.06em" }}>MESA 1</span>
+            </div>
+
+            <div style={{ fontSize: 20, fontWeight: 800, color: "#fff", marginBottom: 4, letterSpacing: "-0.02em" }}>
+              Bem-vindo!
+            </div>
+            <div style={{ fontSize: 11, color: "#666", marginBottom: 24, textAlign: "center" }}>
+              Preencha para entrar na mesa
+            </div>
+
+            {/* Campo nome */}
+            <div style={{ width: "100%", marginBottom: 12 }}>
+              <div style={{ fontSize: 10, color: "#555", marginBottom: 5, fontWeight: 600, letterSpacing: "0.04em" }}>SEU NOME</div>
+              <div style={{
+                background: "#1a1a1a", border: "1.5px solid rgba(255,255,255,0.1)",
+                borderRadius: 10, padding: "11px 14px",
+                fontSize: 13, color: "#fff",
+              }}>
+                João Silva
+              </div>
+            </div>
+
+            {/* Campo celular */}
+            <div style={{ width: "100%", marginBottom: 18 }}>
+              <div style={{ fontSize: 10, color: "#555", marginBottom: 5, fontWeight: 600, letterSpacing: "0.04em" }}>CELULAR (WHATSAPP)</div>
+              <div style={{
+                background: "#1a1a1a", border: "1.5px solid #4F8EF7",
+                borderRadius: 10, padding: "11px 14px",
+                display: "flex", alignItems: "center", gap: 8,
+              }}>
+                <div style={{ fontSize: 15 }}>📱</div>
+                <span style={{ fontSize: 13, color: "#aaa" }}>(11) 99999-9999</span>
+              </div>
+            </div>
+
+            {/* Checkbox */}
+            <div style={{ display: "flex", gap: 8, alignItems: "flex-start", width: "100%", marginBottom: 22 }}>
+              <div style={{
+                width: 16, height: 16, borderRadius: 4, flexShrink: 0, marginTop: 1,
+                background: "#4F8EF7", display: "flex", alignItems: "center", justifyContent: "center",
+              }}>
+                <div style={{ width: 8, height: 5, borderLeft: "2px solid #fff", borderBottom: "2px solid #fff", transform: "rotate(-45deg)", marginBottom: 2 }} />
+              </div>
+              <span style={{ fontSize: 10, color: "#555", lineHeight: 1.6 }}>
+                Concordo com os termos de uso e política de privacidade
+              </span>
+            </div>
+
+            {/* Botão */}
+            <div style={{
+              width: "100%",
+              background: "linear-gradient(135deg, #4F8EF7 0%, #3d7de8 100%)",
+              borderRadius: 12, padding: "13px",
+              textAlign: "center", color: "#fff",
+              fontSize: 14, fontWeight: 700,
+              boxShadow: "0 6px 24px rgba(79,142,247,0.5)",
+            }}>
+              Entrar na mesa →
+            </div>
+
+            {/* Footer da tela */}
+            <div style={{ marginTop: "auto", paddingTop: 20, fontSize: 9, color: "#333", textAlign: "center" }}>
+              Powered by Publy
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** Mock fiel ao visual real da página Analytics no admin */
+function DesktopMockAnalytics() {
+  const SIDEBAR_ITEMS = ["Início", "Dashboard", "Mesas", "Pedidos", "Cardápio", "Contas", "Estoque", "Financeiro", "Analytics", "Clientes", "Config."];
+  const METRICS = [
+    { label: "Receita total", value: "R$ 12.840", delta: "+18%", up: true },
+    { label: "Contas fechadas", value: "247", delta: "+12%", up: true },
+    { label: "Ticket médio", value: "R$ 52,00", delta: "+5%", up: true },
+    { label: "Variação de receita", value: "+22%", delta: "vs mês anterior", up: true },
+  ];
+  const TOP_PRODS = [
+    { name: "Heineken 600ml", pct: 85, val: "R$ 3.240" },
+    { name: "Hambúrguer Artesanal", pct: 68, val: "R$ 2.890" },
+    { name: "Caipirinha", pct: 54, val: "R$ 1.960" },
+    { name: "Batata Frita", pct: 41, val: "R$ 1.420" },
+  ];
+  const HORARIOS = [
+    { h: "18h", pct: 22 }, { h: "19h", pct: 45 }, { h: "20h", pct: 78 },
+    { h: "21h", pct: 100 }, { h: "22h", pct: 88 }, { h: "23h", pct: 60 }, { h: "00h", pct: 34 },
+  ];
+
+  return (
+    <div style={{
+      borderRadius: 14, overflow: "hidden",
+      boxShadow: "0 40px 100px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.06)",
+      filter: "drop-shadow(0 20px 60px rgba(0,0,0,0.6))",
+    }}>
+      {/* Barra macOS */}
+      <div style={{ background: "#1a1a1a", padding: "9px 14px", display: "flex", alignItems: "center", gap: 7, borderBottom: "1px solid #111" }}>
+        {["#FF5F57", "#FFBD2E", "#28CA41"].map((c) => (
+          <div key={c} style={{ width: 10, height: 10, borderRadius: "50%", background: c }} />
+        ))}
+        <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
+          <div style={{ background: "#2a2a2a", borderRadius: 5, padding: "3px 18px", fontSize: 10, color: "#666", fontFamily: "monospace" }}>
+            publy.app/admin/analytics
+          </div>
+        </div>
+      </div>
+
+      {/* Layout admin */}
+      <div style={{ display: "flex", height: 440, background: "#0F0F0F" }}>
+        {/* Sidebar */}
+        <div style={{ width: 120, background: "#111", borderRight: "1px solid rgba(255,255,255,0.05)", display: "flex", flexDirection: "column", padding: "12px 0" }}>
+          {/* Logo */}
+          <div style={{ padding: "0 12px 12px", borderBottom: "1px solid rgba(255,255,255,0.05)", marginBottom: 8 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2,7px)", gap: 2, marginBottom: 3 }}>
+              {[1, 0.45, 0.45, 1, 1, 0.2].map((op, i) => (
+                <div key={i} style={{ width: 7, height: 7, borderRadius: 1.5, background: "#4F8EF7", opacity: op }} />
+              ))}
+            </div>
+            <div style={{ fontSize: 8, color: "#666", letterSpacing: "0.1em" }}>Painel Admin</div>
+          </div>
+          {SIDEBAR_ITEMS.map((item, i) => (
+            <div key={item} style={{
+              padding: "6px 12px", fontSize: 10,
+              color: item === "Analytics" ? "#4F8EF7" : "#555",
+              fontWeight: item === "Analytics" ? 700 : 400,
+              background: item === "Analytics" ? "rgba(79,142,247,0.1)" : "transparent",
+              borderLeft: item === "Analytics" ? "2px solid #4F8EF7" : "2px solid transparent",
+            }}>
+              {item}
+            </div>
+          ))}
+        </div>
+
+        {/* Main */}
+        <div style={{ flex: 1, overflow: "hidden", padding: "14px 16px", display: "flex", flexDirection: "column", gap: 12 }}>
+          {/* Header */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: "#fff" }}>Analytics</div>
+              <div style={{ fontSize: 10, color: "#555" }}>Maio 2026 · comparado ao mês anterior</div>
+            </div>
+            <div style={{ background: "#1a1a1a", border: "1px solid rgba(255,255,255,0.07)", borderRadius: 6, padding: "4px 10px", fontSize: 9, color: "#666" }}>
+              Últimos 30 dias ▾
+            </div>
+          </div>
+
+          {/* Metric cards */}
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 8 }}>
+            {METRICS.map(({ label, value, delta, up }) => (
+              <div key={label} style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 10, padding: "10px 12px" }}>
+                <div style={{ fontSize: 9, color: "#555", marginBottom: 5, fontWeight: 500 }}>{label}</div>
+                <div style={{ fontSize: 14, fontWeight: 800, color: "#fff", letterSpacing: "-0.02em" }}>{value}</div>
+                <div style={{ fontSize: 9, color: up ? "#22C55E" : "#ef4444", marginTop: 4, fontWeight: 600 }}>{delta}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Charts row */}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, flex: 1, minHeight: 0 }}>
+            {/* Tendência de receita - area chart */}
+            <div style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 10, padding: "12px", display: "flex", flexDirection: "column" }}>
+              <div style={{ fontSize: 10, fontWeight: 700, color: "#fff", marginBottom: 4 }}>Tendência de receita</div>
+              <div style={{ fontSize: 8, color: "#555", marginBottom: 10 }}>Receita diária (últimos 30 dias)</div>
+              {/* SVG area chart */}
+              <div style={{ flex: 1, position: "relative", minHeight: 80 }}>
+                <svg width="100%" height="100%" viewBox="0 0 200 80" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="ag1" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#4F8EF7" stopOpacity="0.35" />
+                      <stop offset="100%" stopColor="#4F8EF7" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M0,65 L20,58 L40,50 L60,45 L80,35 L100,30 L120,38 L140,22 L160,18 L180,12 L200,10 L200,80 L0,80 Z" fill="url(#ag1)" />
+                  <path d="M0,65 L20,58 L40,50 L60,45 L80,35 L100,30 L120,38 L140,22 L160,18 L180,12 L200,10" fill="none" stroke="#4F8EF7" strokeWidth="1.5" />
+                  {/* Dots */}
+                  {[[0,65],[40,50],[80,35],[120,38],[160,18],[200,10]].map(([x,y],i) => (
+                    <circle key={i} cx={x} cy={y} r="2.5" fill="#4F8EF7" />
+                  ))}
+                </svg>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              {/* Top produtos */}
+              <div style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 10, padding: "12px", flex: 1 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, color: "#fff", marginBottom: 8 }}>Top produtos por receita</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                  {TOP_PRODS.map(({ name, pct, val }) => (
+                    <div key={name}>
+                      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 2 }}>
+                        <span style={{ fontSize: 8.5, color: "#888", maxWidth: 100, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{name}</span>
+                        <span style={{ fontSize: 8.5, color: "#4F8EF7", fontWeight: 700 }}>{val}</span>
+                      </div>
+                      <div style={{ height: 4, background: "rgba(255,255,255,0.05)", borderRadius: 3 }}>
+                        <div style={{ height: "100%", width: `${pct}%`, background: "linear-gradient(90deg, #4F8EF7, #7ab3ff)", borderRadius: 3 }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Receita por horário */}
+              <div style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 10, padding: "12px", flex: 1 }}>
+                <div style={{ fontSize: 10, fontWeight: 700, color: "#fff", marginBottom: 8 }}>Receita por horário</div>
+                <div style={{ display: "flex", alignItems: "flex-end", gap: 4, height: 44 }}>
+                  {HORARIOS.map(({ h, pct }) => (
+                    <div key={h} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}>
+                      <div style={{
+                        width: "100%", height: `${pct * 0.4}px`,
+                        background: pct >= 80 ? "linear-gradient(180deg,#4F8EF7,#3d7de8)" : "rgba(79,142,247,0.35)",
+                        borderRadius: "3px 3px 0 0",
+                        transition: "height 0.3s",
+                      }} />
+                      <div style={{ fontSize: 7, color: "#444" }}>{h}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─────────────────────────────────────────────────────────────────────────── */
+
 export default function HomePage() {
   return (
     <>
@@ -147,7 +448,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        {/* Mock de interface — fiel ao visual real do Publy */}
+        {/* Mock do kanban */}
         <div className="fade-up-6" style={{
           position: "relative", marginTop: 72,
           maxWidth: 980, width: "100%",
@@ -155,7 +456,7 @@ export default function HomePage() {
           borderRadius: 16, overflow: "hidden",
           boxShadow: "0 40px 100px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.06)",
         }}>
-          {/* ── Barra de título do browser (macOS) ── */}
+          {/* Barra do browser */}
           <div style={{ background: "#1e1e1e", padding: "10px 16px", display: "flex", alignItems: "center", gap: 8, borderBottom: "1px solid #111" }}>
             {["#FF5F57","#FFBD2E","#28CA41"].map((c) => (
               <div key={c} style={{ width: 11, height: 11, borderRadius: "50%", background: c, flexShrink: 0 }} />
@@ -167,9 +468,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* ── Navbar do sistema Publy ── */}
+          {/* Navbar do sistema */}
           <div style={{ background: "#0F0F0F", padding: "0 16px", display: "flex", alignItems: "center", gap: 12, height: 44, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-            {/* Logo Publy */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(2,8px)", gap: 2.5, marginRight: 4 }}>
               {[1,0.45,0.45,1,1,0.2].map((op,i) => (
                 <div key={i} style={{ width:8, height:8, borderRadius:2, background:"#4F8EF7", opacity:op }} />
@@ -178,9 +478,7 @@ export default function HomePage() {
             <span style={{ fontSize: 11, fontWeight: 300, color: "#fff", letterSpacing: "0.14em", textTransform: "uppercase", fontFamily: "sans-serif" }}>PUBLY</span>
             <div style={{ width: 1, height: 18, background: "rgba(255,255,255,0.1)", margin: "0 4px" }} />
             <span style={{ fontSize: 11, color: "#666" }}>Admin</span>
-            {/* Spacer */}
             <div style={{ flex: 1 }} />
-            {/* Online badge */}
             <div style={{ display: "flex", alignItems: "center", gap: 5, background: "rgba(34,197,94,0.12)", border: "1px solid rgba(34,197,94,0.25)", borderRadius: 100, padding: "3px 10px" }}>
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#22C55E" }} />
               <span style={{ fontSize: 10, color: "#22C55E", fontWeight: 600 }}>Online</span>
@@ -189,7 +487,7 @@ export default function HomePage() {
             <div style={{ background: "#ef4444", borderRadius: 6, padding: "4px 10px", fontSize: 10, color: "#fff", fontWeight: 700 }}>Sair</div>
           </div>
 
-          {/* ── Tabs de navegação ── */}
+          {/* Tabs */}
           <div style={{ background: "#ffffff", borderBottom: "1px solid #e8e4dc", padding: "0 16px", display: "flex", gap: 0 }}>
             {[
               { label: "Geral", active: true },
@@ -205,7 +503,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* ── Kanban Board ── */}
+          {/* Kanban */}
           <div style={{ background: "#F2F0EB", padding: "14px 12px", display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 10 }}>
             {[
               { label: "Recebido",   count: 3, bg: "#3B82F6", light: "rgba(59,130,246,0.08)",
@@ -218,12 +516,10 @@ export default function HomePage() {
                 items: [["Mesa 3","2x Cerveja"],["Mesa 7","1x Hambúrguer"],["Mesa 11","3x Água"]] },
             ].map(({ label, count, bg, light, items }) => (
               <div key={label} style={{ borderRadius: 12, overflow: "hidden", background: "#fff", boxShadow: "0 1px 4px rgba(0,0,0,0.06)" }}>
-                {/* Header da coluna */}
                 <div style={{ background: bg, padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <span style={{ fontSize: 11, fontWeight: 800, color: "#fff", letterSpacing: "0.04em" }}>{label}</span>
                   <span style={{ fontSize: 11, fontWeight: 800, color: "#fff", background: "rgba(255,255,255,0.25)", padding: "1px 8px", borderRadius: 100 }}>{count}</span>
                 </div>
-                {/* Cards */}
                 <div style={{ background: light, padding: 8, display: "flex", flexDirection: "column", gap: 6 }}>
                   {items.map(([mesa, item], i) => (
                     <div key={i} style={{ background: "#fff", borderRadius: 8, padding: "7px 10px", boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
@@ -251,6 +547,114 @@ export default function HomePage() {
               <div style={{ fontSize: 15, color: "#888", marginTop: 8 }}>{label}</div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ── Spotlight: Experiência do cliente ─────── */}
+      <section style={{ padding: "100px 24px", overflow: "hidden" }}>
+        <div className="spotlight-grid" style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+          {/* Texto */}
+          <div>
+            <div style={{ fontSize: 12, fontWeight: 700, color: "#4F8EF7", textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 16 }}>
+              Autoatendimento
+            </div>
+            <h2 style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: 20 }}>
+              O cliente pede.<br />Você serve.
+            </h2>
+            <p style={{ fontSize: 16, color: "#777", lineHeight: 1.8, marginBottom: 32 }}>
+              Ao escanear o QR Code da mesa, o cliente vê o cardápio completo e faz o pedido direto do celular. Sem baixar app, sem cadastro complicado — só nome e WhatsApp.
+            </p>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              {[
+                { icon: "⚡", title: "Sem fila, sem espera", desc: "Pedidos chegam direto na cozinha em segundos" },
+                { icon: "📱", title: "Funciona em qualquer celular", desc: "iOS, Android — basta ter um navegador" },
+                { icon: "🔒", title: "Simples e seguro", desc: "Identidade confirmada via WhatsApp" },
+              ].map(({ icon, title, desc }) => (
+                <div key={title} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+                  <div style={{
+                    width: 36, height: 36, borderRadius: 10, flexShrink: 0,
+                    background: "rgba(79,142,247,0.1)", border: "1px solid rgba(79,142,247,0.2)",
+                    display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16,
+                  }}>
+                    {icon}
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 3 }}>{title}</div>
+                    <div style={{ fontSize: 13, color: "#666", lineHeight: 1.6 }}>{desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Mock phone */}
+          <div style={{ display: "flex", justifyContent: "center", position: "relative" }}>
+            {/* Glow atrás do phone */}
+            <div style={{
+              position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)",
+              width: 320, height: 320,
+              background: "radial-gradient(ellipse, rgba(79,142,247,0.15) 0%, transparent 70%)",
+              pointerEvents: "none",
+            }} />
+            <div style={{ animation: "gridFloat 7s ease-in-out infinite" }}>
+              <PhoneMockMesa />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Spotlight: Analytics ──────────────────── */}
+      <section className="section-alt" style={{ padding: "100px 24px", overflow: "hidden" }}>
+        <div className="spotlight-grid" style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
+
+          {/* Mock desktop — vem primeiro no grid, aparece à esquerda */}
+          <div className="spotlight-desktop-mock" style={{ position: "relative" }}>
+            <div style={{
+              position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)",
+              width: 500, height: 300,
+              background: "radial-gradient(ellipse, rgba(79,142,247,0.1) 0%, transparent 70%)",
+              pointerEvents: "none",
+            }} />
+            <div style={{ animation: "gridFloat 8s ease-in-out infinite", position: "relative" }}>
+              <DesktopMockAnalytics />
+            </div>
+          </div>
+
+          {/* Texto */}
+          <div>
+            <div style={{ fontSize: 12, fontWeight: 700, color: "#4F8EF7", textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 16 }}>
+              Dados & Relatórios
+            </div>
+            <h2 style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: 20 }}>
+              Tome decisões<br />com dados reais.
+            </h2>
+            <p style={{ fontSize: 16, color: "#777", lineHeight: 1.8, marginBottom: 32 }}>
+              Receita por dia, produtos mais vendidos, horários de pico, ticket médio e variação mensal. Tudo em um painel limpo, sem planilha, sem complicação.
+            </p>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              {[
+                { icon: "📈", title: "Tendência de receita", desc: "Gráfico de área com evolução diária e mensal" },
+                { icon: "🏆", title: "Top produtos", desc: "Ranking por receita e volume de pedidos" },
+                { icon: "🕐", title: "Horários de pico", desc: "Saiba quando seu estabelecimento está mais movimentado" },
+              ].map(({ icon, title, desc }) => (
+                <div key={title} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
+                  <div style={{
+                    width: 36, height: 36, borderRadius: 10, flexShrink: 0,
+                    background: "rgba(79,142,247,0.1)", border: "1px solid rgba(79,142,247,0.2)",
+                    display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16,
+                  }}>
+                    {icon}
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: "#fff", marginBottom: 3 }}>{title}</div>
+                    <div style={{ fontSize: 13, color: "#666", lineHeight: 1.6 }}>{desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -284,8 +688,38 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Funciona para qualquer negócio ───────── */}
+      <section className="section-alt" style={{ padding: "80px 24px" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
+          <div style={{ fontSize: 12, fontWeight: 700, color: "#4F8EF7", textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 16 }}>
+            Para qualquer estabelecimento
+          </div>
+          <h2 style={{ fontSize: "clamp(24px,3.5vw,40px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: 48 }}>
+            Não importa o tamanho do seu negócio
+          </h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(140px,1fr))", gap: 16 }}>
+            {[
+              { icon: "🍺", label: "Bares e Pubs" },
+              { icon: "🍕", label: "Pizzarias" },
+              { icon: "☕", label: "Cafeterias" },
+              { icon: "🍔", label: "Hamburguerias" },
+              { icon: "🍽️", label: "Restaurantes" },
+              { icon: "🥩", label: "Churrascarias" },
+            ].map(({ icon, label }) => (
+              <div key={label} style={{
+                background: "#141414", border: "1px solid rgba(255,255,255,0.06)",
+                borderRadius: 16, padding: "24px 16px", textAlign: "center",
+              }}>
+                <div style={{ fontSize: 32, marginBottom: 10 }}>{icon}</div>
+                <div style={{ fontSize: 13, fontWeight: 600, color: "#ccc" }}>{label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Como funciona ────────────────────────── */}
-      <section className="section-alt" style={{ padding: "96px 24px" }}>
+      <section style={{ padding: "96px 24px" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 64 }}>
             <div style={{ fontSize: 12, fontWeight: 700, color: "#4F8EF7", textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 12 }}>

@@ -143,3 +143,28 @@ a { text-decoration: none; color: inherit; }
     linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
   background-size: 60px 60px;
 }
+
+/* ── Responsivo: seções spotlight de 2 colunas ── */
+@media (max-width: 768px) {
+  .spotlight-grid {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+  .spotlight-grid-reverse {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+  .spotlight-grid-reverse > *:first-child {
+    order: 2;
+  }
+  .spotlight-grid-reverse > *:last-child {
+    order: 1;
+  }
+  .steps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .tipos-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
