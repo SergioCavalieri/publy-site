@@ -1,16 +1,22 @@
 "use client";
 
 // Página de confirmação — não deve ser indexada
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import PublyLogo from "@/components/PublyLogo";
 import Footer from "@/components/Footer";
+import { trackConversao } from "@/lib/analytics";
 
 function ObrigadoContent() {
   const params = useSearchParams();
   const email = params.get("email") || "";
   const plano = params.get("plano") || "";
+
+  // Dispara evento de conversão ao chegar nesta página
+  useEffect(() => {
+    if (plano) trackConversao(plano, email || undefined);
+  }, [plano, email]);
 
   return (
     <div style={{

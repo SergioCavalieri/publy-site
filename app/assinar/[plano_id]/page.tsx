@@ -12,6 +12,45 @@ import type { Plano } from "@/lib/api";
 
 const UF_LIST = ["","AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"];
 
+// ── Máscaras de formatação ──────────────────────────────────────────────────
+
+function maskTelefone(value: string): string {
+  const d = value.replace(/\D/g, "").slice(0, 11);
+  if (d.length === 0) return "";
+  if (d.length <= 2)  return `(${d}`;
+  if (d.length <= 6)  return `(${d.slice(0,2)}) ${d.slice(2)}`;
+  if (d.length <= 10) return `(${d.slice(0,2)}) ${d.slice(2,6)}-${d.slice(6)}`;
+  return `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`;
+}
+
+function maskCNPJ(value: string): string {
+  const d = value.replace(/\D/g, "").slice(0, 14);
+  if (d.length === 0)  return "";
+  if (d.length <= 2)   return d;
+  if (d.length <= 5)   return `${d.slice(0,2)}.${d.slice(2)}`;
+  if (d.length <= 8)   return `${d.slice(0,2)}.${d.slice(2,5)}.${d.slice(5)}`;
+  if (d.length <= 12)  return `${d.slice(0,2)}.${d.slice(2,5)}.${d.slice(5,8)}/${d.slice(8)}`;
+  return `${d.slice(0,2)}.${d.slice(2,5)}.${d.slice(5,8)}/${d.slice(8,12)}-${d.slice(12)}`;
+}
+
+function validarCNPJ(cnpj: string): boolean {
+  const d = cnpj.replace(/\D/g, "");
+  if (d.length !== 14) return false;
+  if (/^(\d)\1+$/.test(d)) return false; // todos iguais (ex: 00000000000000)
+
+  const calc = (s: string, len: number): number => {
+    let sum = 0, pos = len - 7;
+    for (let i = len; i >= 1; i--) {
+      sum += parseInt(s[len - i]) * pos--;
+      if (pos < 2) pos = 9;
+    }
+    const rem = sum % 11;
+    return rem < 2 ? 0 : 11 - rem;
+  };
+
+  return calc(d, 12) === parseInt(d[12]) && calc(d, 13) === parseInt(d[13]);
+}
+
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div style={{ marginBottom: 16 }}>
@@ -97,6 +136,20 @@ export default function AssinarPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!aceitouTermos) { setErro("Você precisa aceitar os Termos de Uso para continuar."); return; }
+
+    // Valida CNPJ se preenchido
+    if (form.cnpj && !validarCNPJ(form.cnpj)) {
+      setErro("CNPJ inválido. Verifique o número e tente novamente.");
+      return;
+    }
+
+    // Valida telefone (mínimo 10 dígitos)
+    const telDigits = form.telefone.replace(/\D/g, "");
+    if (telDigits.length < 10) {
+      setErro("Telefone inválido. Informe DDD + número completo. Ex: (11) 99999-0000");
+      return;
+    }
+
     setErro(""); setEnviando(true);
 
     try {
@@ -107,7 +160,13 @@ export default function AssinarPage() {
         body: JSON.stringify({ ...form, plano_id: Number(plano_id), periodo, trial_dias: 14 }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.detail || "Erro ao processar cadastro");
+      if (!res.ok) {
+        // Pydantic retorna detail como array em erros de validação
+        const msg = Array.isArray(data.detail)
+          ? data.detail.map((e: { msg: string }) => e.msg.replace(/^Value error,\s*/i, "")).join(" | ")
+          : data.detail || "Erro ao processar cadastro";
+        throw new Error(msg);
+      }
       router.push(`/obrigado?email=${encodeURIComponent(form.email)}&plano=${encodeURIComponent(plano?.nome || "")}`);
     } catch (err: unknown) {
       setErro(err instanceof Error ? err.message : "Erro inesperado");
@@ -166,7 +225,15 @@ export default function AssinarPage() {
                 </Field>
                 <div style={{ gridColumn: "1/-1" }}>
                   <Field label="Telefone / WhatsApp *">
-                    <input className="field-input" value={form.telefone} onChange={(e) => set("telefone", e.target.value)} required placeholder="(11) 99999-0000" />
+                    <input
+                      className="field-input"
+                      value={form.telefone}
+                      onChange={(e) => set("telefone", maskTelefone(e.target.value))}
+                      required
+                      placeholder="(11) 99999-0000"
+                      inputMode="tel"
+                      maxLength={15}
+                    />
                   </Field>
                 </div>
               </div>
@@ -185,7 +252,14 @@ export default function AssinarPage() {
                   <input className="field-input" value={form.razao_social} onChange={(e) => set("razao_social", e.target.value)} placeholder="João Ltda." />
                 </Field>
                 <Field label="CNPJ">
-                  <input className="field-input" value={form.cnpj} onChange={(e) => set("cnpj", e.target.value)} placeholder="00.000.000/0001-00" />
+                  <input
+                    className="field-input"
+                    value={form.cnpj}
+                    onChange={(e) => set("cnpj", maskCNPJ(e.target.value))}
+                    placeholder="00.000.000/0001-00"
+                    inputMode="numeric"
+                    maxLength={18}
+                  />
                 </Field>
               </div>
 
