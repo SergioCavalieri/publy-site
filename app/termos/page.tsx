@@ -149,7 +149,7 @@ export default function TermosPage() {
           title: "Foro e Lei Aplicável",
           content: (
             <>
-              <P>Estes Termos são regidos pelas leis da República Federativa do Brasil. Fica eleito o foro da comarca de São Paulo/SP para dirimir quaisquer controvérsias, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</P>
+              <P>Estes Termos são regidos pelas leis da República Federativa do Brasil. Fica eleito o foro da comarca de São José dos Campos/SP para dirimir quaisquer controvérsias, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</P>
               <P>Dúvidas sobre estes Termos podem ser enviadas para: <strong>contato@publy.app</strong></P>
             </>
           ),

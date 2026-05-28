@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import PublyLogo from "@/components/PublyLogo";
 import FeatureIcon from "@/components/FeatureIcon";
 import { SITE_URL, softwareApplicationSchema, organizationSchema } from "@/lib/seo";
+import { HeroFade, FadeUp, SlideLeft, SlideRight, Stagger, StaggerItem } from "@/components/Animate";
 
 const FEATURES = [
   {
@@ -531,59 +532,76 @@ export default function HomePage() {
         <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)", backgroundSize: "60px 60px", pointerEvents: "none" }} />
 
         <div style={{ position: "relative", maxWidth: 760 }}>
-          <div className="fade-up" style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 16px", borderRadius: 100, background: "rgba(79,142,247,0.12)", border: "1px solid rgba(79,142,247,0.25)", marginBottom: 32 }}>
-            <div style={{ width: 6, height: 6, borderRadius: "50%", background: C, animation: "publyPulse1 2s ease-in-out infinite" }} />
-            <span style={{ fontSize: 12, color: C, fontWeight: 600, letterSpacing: "0.06em" }}>14 DIAS GRÁTIS — SEM CARTÃO</span>
-          </div>
+          <HeroFade delay={0}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "6px 16px", borderRadius: 100, background: "rgba(79,142,247,0.12)", border: "1px solid rgba(79,142,247,0.25)", marginBottom: 32 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: C, animation: "publyPulse1 2s ease-in-out infinite" }} />
+              <span style={{ fontSize: 12, color: C, fontWeight: 600, letterSpacing: "0.06em" }}>14 DIAS GRÁTIS — SEM CARTÃO</span>
+            </div>
+          </HeroFade>
 
-          <div className="fade-up-1" style={{ display: "flex", justifyContent: "center", marginBottom: 28 }}>
-            <PublyLogo size={18} gap={6} color={C} animated />
-          </div>
+          <HeroFade delay={0.15}>
+            <div style={{ display: "flex", justifyContent: "center", marginBottom: 28 }}>
+              <PublyLogo size={18} gap={6} color={C} animated />
+            </div>
+          </HeroFade>
 
-          <h1 className="fade-up-2" style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: "clamp(36px, 6vw, 72px)", color: "#ffffff", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
-            O sistema completo<br /><span style={{ color: C }}>para o seu negócio</span>
-          </h1>
+          <HeroFade delay={0.25}>
+            <h1 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: "clamp(36px, 6vw, 72px)", color: "#ffffff", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
+              O sistema completo<br /><span style={{ color: C }}>para o seu negócio</span>
+            </h1>
+          </HeroFade>
 
-          <p className="fade-up-3" style={{ fontSize: "clamp(16px, 2vw, 20px)", color: "#888", lineHeight: 1.7, marginBottom: 40, maxWidth: 560, margin: "0 auto 40px" }}>
-            QR Code por mesa, pedidos em tempo real, kanban para a cozinha e relatórios de vendas — tudo que o seu estabelecimento precisa, num só lugar.
-          </p>
+          <HeroFade delay={0.35}>
+            <p style={{ fontSize: "clamp(16px, 2vw, 20px)", color: "#888", lineHeight: 1.7, marginBottom: 40, maxWidth: 560, margin: "0 auto 40px" }}>
+              QR Code por mesa, pedidos em tempo real, kanban para a cozinha e relatórios de vendas — tudo que o seu estabelecimento precisa, num só lugar.
+            </p>
+          </HeroFade>
 
-          <div className="fade-up-4" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="/planos" className="btn-primary" style={{ fontSize: 16, padding: "15px 36px" }}>Começar 14 dias grátis →</Link>
-            <Link href="/#funcionalidades" className="btn-ghost-white" style={{ fontSize: 16, padding: "15px 30px" }}>Ver funcionalidades</Link>
-          </div>
+          <HeroFade delay={0.45}>
+            <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+              <Link href="/planos" className="btn-primary" style={{ fontSize: 16, padding: "15px 36px" }}>Começar 14 dias grátis →</Link>
+              <Link href="/#funcionalidades" className="btn-ghost-white" style={{ fontSize: 16, padding: "15px 30px" }}>Ver funcionalidades</Link>
+            </div>
+          </HeroFade>
 
-          <p className="fade-up-5" style={{ color: "#555", fontSize: 13, marginTop: 20 }}>
-            Sem contrato · Cancele quando quiser · Setup em 30 minutos
-          </p>
+          <HeroFade delay={0.55}>
+            <p style={{ color: "#555", fontSize: 13, marginTop: 20 }}>
+              Sem contrato · Cancele quando quiser · Setup em 30 minutos
+            </p>
+          </HeroFade>
         </div>
 
         {/* Kanban mock — tema escuro, fiel ao app real */}
-        <div className="fade-up-6" style={{ position: "relative", marginTop: 72, maxWidth: 1100, width: "100%", animation: "gridFloat 6s ease-in-out infinite" }}>
-          <KanbanMock />
-        </div>
+        <HeroFade delay={0.7}>
+          <div style={{ position: "relative", marginTop: 72, maxWidth: 1100, width: "100%", animation: "gridFloat 6s ease-in-out infinite" }}>
+            <KanbanMock />
+          </div>
+        </HeroFade>
       </section>
 
       {/* ── Métricas ──────────────────────────────── */}
       <section className="section-alt" style={{ padding: "64px 24px" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2 }}>
+        <Stagger style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2 }}>
           {[
             { num: "< 30min", label: "para configurar e usar" },
             { num: "14 dias",  label: "de trial grátis" },
             { num: "100%",     label: "via navegador, sem app" },
           ].map(({ num, label }) => (
-            <div key={label} style={{ textAlign: "center", padding: "32px 24px" }}>
-              <div style={{ fontSize: "clamp(32px,4vw,48px)", fontWeight: 800, color: C, letterSpacing: "-0.02em", lineHeight: 1 }}>{num}</div>
-              <div style={{ fontSize: 15, color: "#888", marginTop: 8 }}>{label}</div>
-            </div>
+            <StaggerItem key={label}>
+              <div style={{ textAlign: "center", padding: "32px 24px" }}>
+                <div style={{ fontSize: "clamp(32px,4vw,48px)", fontWeight: 800, color: C, letterSpacing: "-0.02em", lineHeight: 1 }}>{num}</div>
+                <div style={{ fontSize: 15, color: "#888", marginTop: 8 }}>{label}</div>
+              </div>
+            </StaggerItem>
           ))}
-        </div>
+        </Stagger>
       </section>
 
       {/* ── Spotlight: Experiência do cliente ─────── */}
       <section style={{ padding: "100px 24px", overflow: "hidden" }}>
         <div className="spotlight-grid" style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
           {/* Texto */}
+          <SlideLeft>
           <div>
             <div style={{ fontSize: 12, fontWeight: 700, color: C, textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 16 }}>Autoatendimento</div>
             <h2 style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: 20 }}>
@@ -609,14 +627,17 @@ export default function HomePage() {
               ))}
             </div>
           </div>
+          </SlideLeft>
 
           {/* Mock phone */}
-          <div style={{ display: "flex", justifyContent: "center", position: "relative" }}>
-            <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 320, height: 320, background: "radial-gradient(ellipse, rgba(79,142,247,0.15) 0%, transparent 70%)", pointerEvents: "none" }} />
-            <div style={{ animation: "gridFloat 7s ease-in-out infinite" }}>
-              <PhoneMockMesa />
+          <SlideRight>
+            <div style={{ display: "flex", justifyContent: "center", position: "relative" }}>
+              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 320, height: 320, background: "radial-gradient(ellipse, rgba(79,142,247,0.15) 0%, transparent 70%)", pointerEvents: "none" }} />
+              <div style={{ animation: "gridFloat 7s ease-in-out infinite" }}>
+                <PhoneMockMesa />
+              </div>
             </div>
-          </div>
+          </SlideRight>
         </div>
       </section>
 
@@ -624,14 +645,17 @@ export default function HomePage() {
       <section className="section-alt" style={{ padding: "100px 24px", overflow: "hidden" }}>
         <div className="spotlight-grid" style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
           {/* Mock desktop */}
-          <div style={{ position: "relative" }}>
-            <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 300, background: "radial-gradient(ellipse, rgba(79,142,247,0.1) 0%, transparent 70%)", pointerEvents: "none" }} />
-            <div style={{ animation: "gridFloat 8s ease-in-out infinite", position: "relative" }}>
-              <DesktopMockAnalytics />
+          <SlideLeft>
+            <div style={{ position: "relative" }}>
+              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 300, background: "radial-gradient(ellipse, rgba(79,142,247,0.1) 0%, transparent 70%)", pointerEvents: "none" }} />
+              <div style={{ animation: "gridFloat 8s ease-in-out infinite", position: "relative" }}>
+                <DesktopMockAnalytics />
+              </div>
             </div>
-          </div>
+          </SlideLeft>
 
           {/* Texto */}
+          <SlideRight>
           <div>
             <div style={{ fontSize: 12, fontWeight: 700, color: C, textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 16 }}>Dados & Relatórios</div>
             <h2 style={{ fontSize: "clamp(28px,3.5vw,44px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", lineHeight: 1.15, marginBottom: 20 }}>
@@ -657,38 +681,43 @@ export default function HomePage() {
               ))}
             </div>
           </div>
+          </SlideRight>
         </div>
       </section>
 
       {/* ── Funcionalidades ──────────────────────── */}
       <section id="funcionalidades" style={{ padding: "96px 24px" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 64 }}>
+          <FadeUp style={{ textAlign: "center", marginBottom: 64 }}>
             <div style={{ fontSize: 12, fontWeight: 700, color: C, textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 12 }}>Funcionalidades</div>
             <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
               Tudo que você precisa,<br />sem complicação
             </h2>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 24 }}>
-            {FEATURES.map(({ icon, title, desc }, i) => (
-              <div key={title} className={`fade-up-${(i % 4) + 1} feature-card`} style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 20, padding: "32px 28px" }}>
-                <div style={{ marginBottom: 20 }}><FeatureIcon name={icon} size={52} /></div>
-                <h3 style={{ fontSize: 17, fontWeight: 700, color: "#ffffff", marginBottom: 10, letterSpacing: "-0.01em" }}>{title}</h3>
-                <p style={{ fontSize: 14, color: "#888", lineHeight: 1.75 }}>{desc}</p>
-              </div>
+          </FadeUp>
+          <Stagger stagger={0.08} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 24 }}>
+            {FEATURES.map(({ icon, title, desc }) => (
+              <StaggerItem key={title} className="feature-card">
+                <div style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 20, padding: "32px 28px", height: "100%" }}>
+                  <div style={{ marginBottom: 20 }}><FeatureIcon name={icon} size={52} /></div>
+                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#ffffff", marginBottom: 10, letterSpacing: "-0.01em" }}>{title}</h3>
+                  <p style={{ fontSize: 14, color: "#888", lineHeight: 1.75 }}>{desc}</p>
+                </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       {/* ── Para qualquer negócio ─────────────────── */}
       <section className="section-alt" style={{ padding: "80px 24px" }}>
         <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: C, textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 16 }}>Para qualquer estabelecimento</div>
-          <h2 style={{ fontSize: "clamp(24px,3.5vw,40px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: 48 }}>
-            Não importa o tamanho do seu negócio
-          </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(130px,1fr))", gap: 16 }}>
+          <FadeUp>
+            <div style={{ fontSize: 12, fontWeight: 700, color: C, textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 16 }}>Para qualquer estabelecimento</div>
+            <h2 style={{ fontSize: "clamp(24px,3.5vw,40px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em", marginBottom: 48 }}>
+              Não importa o tamanho do seu negócio
+            </h2>
+          </FadeUp>
+          <Stagger stagger={0.06} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(130px,1fr))", gap: 16 }}>
             {[
               { icon: <IcoBeer />,   label: "Bares e Pubs" },
               { icon: <IcoPizza />,  label: "Pizzarias" },
@@ -697,42 +726,46 @@ export default function HomePage() {
               { icon: <IcoFork />,   label: "Restaurantes" },
               { icon: <IcoFlame />,  label: "Churrascarias" },
             ].map(({ icon, label }) => (
-              <div key={label} style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 16, padding: "24px 16px", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
-                <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(79,142,247,0.10)", border: "1px solid rgba(79,142,247,0.18)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  {icon}
+              <StaggerItem key={label}>
+                <div style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 16, padding: "24px 16px", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+                  <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(79,142,247,0.10)", border: "1px solid rgba(79,142,247,0.18)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    {icon}
+                  </div>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: "#ccc" }}>{label}</div>
                 </div>
-                <div style={{ fontSize: 13, fontWeight: 600, color: "#ccc" }}>{label}</div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       {/* ── Como funciona ────────────────────────── */}
       <section style={{ padding: "96px 24px" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 64 }}>
+          <FadeUp style={{ textAlign: "center", marginBottom: 64 }}>
             <div style={{ fontSize: 12, fontWeight: 700, color: C, textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 12 }}>Como funciona</div>
             <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.02em" }}>Pronto em 3 passos</h2>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 32 }}>
+          </FadeUp>
+          <Stagger style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 32 }}>
             {STEPS.map(({ num, title, desc }) => (
-              <div key={num} style={{ textAlign: "center" }}>
-                <div style={{ width: 56, height: 56, borderRadius: 16, background: "rgba(79,142,247,0.10)", border: "1px solid rgba(79,142,247,0.20)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
-                  <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 14, fontWeight: 500, color: C }}>{num}</span>
+              <StaggerItem key={num}>
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ width: 56, height: 56, borderRadius: 16, background: "rgba(79,142,247,0.10)", border: "1px solid rgba(79,142,247,0.20)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
+                    <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 14, fontWeight: 500, color: C }}>{num}</span>
+                  </div>
+                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#ffffff", marginBottom: 10 }}>{title}</h3>
+                  <p style={{ fontSize: 14, color: "#888", lineHeight: 1.7 }}>{desc}</p>
                 </div>
-                <h3 style={{ fontSize: 17, fontWeight: 700, color: "#ffffff", marginBottom: 10 }}>{title}</h3>
-                <p style={{ fontSize: 14, color: "#888", lineHeight: 1.7 }}>{desc}</p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       {/* ── CTA Final ────────────────────────────── */}
       <section id="contato" style={{ padding: "96px 24px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 600, height: 300, background: "radial-gradient(ellipse, rgba(79,142,247,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
-        <div style={{ position: "relative", maxWidth: 600, margin: "0 auto" }}>
+        <FadeUp style={{ position: "relative", maxWidth: 600, margin: "0 auto" }}>
           <div style={{ display: "flex", justifyContent: "center", marginBottom: 28 }}>
             <PublyLogo size={16} gap={5} color={C} animated />
           </div>
@@ -748,7 +781,7 @@ export default function HomePage() {
           <p style={{ color: "#444", fontSize: 13, marginTop: 20 }}>
             Dúvidas? <a href="mailto:contato@publy.app" style={{ color: C }}>contato@publy.app</a>
           </p>
-        </div>
+        </FadeUp>
       </section>
 
       <Footer />
