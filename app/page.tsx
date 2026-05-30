@@ -647,10 +647,8 @@ export default function HomePage() {
         <div className="spotlight-grid" style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
           {/* Mock desktop */}
           <SlideLeft>
-            <div style={{ position: "relative" }}>
-              <ScaledMockup originalWidth={780} originalHeight={475}>
-                <DesktopMockAnalytics />
-              </ScaledMockup>
+            <div style={{ position: "relative", overflow: "hidden", borderRadius: 14 }}>
+              <DesktopMockAnalytics />
             </div>
           </SlideLeft>
 
