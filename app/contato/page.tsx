@@ -128,7 +128,7 @@ export default function ContatoPage() {
         <div style={{ maxWidth: 1000, margin: "0 auto" }}>
 
           {/* Cards de info */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, marginBottom: 48 }}>
+          <div className="contato-cards" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, marginBottom: 48 }}>
             {INFO_CARDS.map(({ icon, title, desc, sub }) => (
               <div key={title} style={{
                 background: "#141414", borderRadius: 16, padding: "28px 20px",
@@ -153,7 +153,7 @@ export default function ContatoPage() {
           </div>
 
           {/* Grid formulário + lateral */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 340px", gap: 32, alignItems: "start" }}>
+          <div className="contato-grid" style={{ display: "grid", gridTemplateColumns: "1fr 340px", gap: 32, alignItems: "start" }}>
 
             {/* ── Formulário ── */}
             <div style={{

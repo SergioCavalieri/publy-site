@@ -144,7 +144,7 @@ a { text-decoration: none; color: inherit; }
   background-size: 60px 60px;
 }
 
-/* ── Responsivo: seções spotlight de 2 colunas ── */
+/* ── Responsivo ── */
 @media (max-width: 768px) {
   .spotlight-grid {
     grid-template-columns: 1fr !important;
@@ -154,17 +154,53 @@ a { text-decoration: none; color: inherit; }
     grid-template-columns: 1fr !important;
     gap: 48px !important;
   }
-  .spotlight-grid-reverse > *:first-child {
-    order: 2;
+  .spotlight-grid-reverse > *:first-child { order: 2; }
+  .spotlight-grid-reverse > *:last-child  { order: 1; }
+  .steps-grid  { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .tipos-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Grids inline comuns */
+  .grid-3 { grid-template-columns: 1fr !important; }
+  .grid-2 { grid-template-columns: 1fr !important; }
+  .grid-4 { grid-template-columns: repeat(2,1fr) !important; }
+
+  /* Hero mockups — esconde em mobile para não vazar */
+  .hero-mockup { display: none !important; }
+
+  /* Seção hero centralizada */
+  .hero-section {
+    padding-top: 80px !important;
+    padding-bottom: 48px !important;
+    text-align: center !important;
   }
-  .spotlight-grid-reverse > *:last-child {
-    order: 1;
-  }
-  .steps-grid {
+
+  /* Contato: cards de info empilhados */
+  .contato-cards { grid-template-columns: 1fr !important; }
+
+  /* Contato: formulário full width */
+  .contato-grid {
     grid-template-columns: 1fr !important;
-    gap: 32px !important;
   }
-  .tipos-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+  .contato-sidebar { display: none !important; }
+
+  /* Planos */
+  .planos-grid { grid-template-columns: 1fr !important; }
+
+  /* Depoimentos */
+  .depoimentos-grid { grid-template-columns: 1fr !important; }
+
+  /* Padding geral das seções */
+  .section-padding {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
+
+  /* Botões hero em coluna */
+  .hero-btns {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  /* Overflow prevention */
+  img, video, iframe { max-width: 100%; }
 }

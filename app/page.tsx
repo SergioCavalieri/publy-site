@@ -581,7 +581,7 @@ export default function HomePage() {
 
       {/* ── Métricas ──────────────────────────────── */}
       <section className="section-alt" style={{ padding: "64px 24px" }}>
-        <Stagger style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2 }}>
+        <Stagger className="grid-3" style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2 }}>
           {[
             { num: "< 30min", label: "para configurar e usar" },
             { num: "14 dias",  label: "de trial grátis" },
@@ -746,7 +746,7 @@ export default function HomePage() {
             <div style={{ fontSize: 12, fontWeight: 700, color: C, textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 12 }}>Como funciona</div>
             <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.02em" }}>Pronto em 3 passos</h2>
           </FadeUp>
-          <Stagger style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 32 }}>
+          <Stagger className="steps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 32 }}>
             {STEPS.map(({ num, title, desc }) => (
               <StaggerItem key={num}>
                 <div style={{ textAlign: "center" }}>
