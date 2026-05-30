@@ -146,10 +146,6 @@ a { text-decoration: none; color: inherit; }
 /* ── Responsivo Mobile ── */
 @media (max-width: 768px) {
 
-  /* Previne overflow em todos os elementos */
-  *, *::before, *::after { max-width: 100%; }
-  section, div, header, footer, nav { overflow-x: clip; }
-
   /* Grids: todos para 1 coluna */
   .spotlight-grid,
   .spotlight-grid-reverse,
@@ -165,42 +161,27 @@ a { text-decoration: none; color: inherit; }
     gap: 24px !important;
   }
 
-  /* Grid 4 → 2 colunas */
-  .grid-4 { grid-template-columns: repeat(2,1fr) !important; }
+  .grid-4    { grid-template-columns: repeat(2,1fr) !important; }
+  .tipos-grid { grid-template-columns: repeat(2,1fr) !important; }
 
-  /* Tipos → 2 colunas */
-  .tipos-grid { grid-template-columns: repeat(2, 1fr) !important; }
-
-  /* Mockups — esconde no mobile */
-  .mockup-wrapper { display: none !important; }
+  /* Mockups — contém e escala */
+  .mockup-wrapper {
+    overflow: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .mockup-wrapper > * {
+    transform: scale(0.55) !important;
+    transform-origin: top center !important;
+    margin-bottom: -160px !important;
+  }
 
   /* Sidebar contato — esconde */
   .contato-sidebar { display: none !important; }
 
-  /* Hero: reduz padding */
-  section[style*="minHeight: \"100vh\""],
-  section[style*="min-height: 100vh"] {
-    padding-top: 100px !important;
-    padding-bottom: 60px !important;
-  }
-
-  /* Botões hero: coluna */
-  .hero-btns {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    width: 100% !important;
-  }
-  .hero-btns a, .hero-btns button {
-    width: 100% !important;
-    text-align: center !important;
-  }
-
   /* Form grid interno: 1 coluna */
   .form-grid-2 { grid-template-columns: 1fr !important; }
 
-  /* Textos: reduz padding lateral */
+  /* Planos */
   .plan-card { padding: 24px 20px !important; }
-
-  /* Imagens e iframes */
-  img, video, iframe, svg { max-width: 100% !important; height: auto; }
 }
