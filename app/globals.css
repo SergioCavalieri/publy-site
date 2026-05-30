@@ -164,20 +164,21 @@ a { text-decoration: none; color: inherit; }
   .grid-4    { grid-template-columns: repeat(2,1fr) !important; }
   .tipos-grid { grid-template-columns: repeat(2,1fr) !important; }
 
-  /* Mockups — contém e escala */
-  .mockup-wrapper {
-    overflow: hidden !important;
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-  .mockup-wrapper > * {
-    transform: scale(0.55) !important;
-    transform-origin: top center !important;
-    margin-bottom: -160px !important;
-  }
+  /* Mockups — esconde no mobile */
+  .mockup-wrapper { display: none !important; }
+
+  /* Legal layout: 1 coluna, esconde índice lateral */
+  .legal-grid { grid-template-columns: 1fr !important; gap: 0 !important; }
+  .legal-aside { display: none !important; }
 
   /* Sidebar contato — esconde */
   .contato-sidebar { display: none !important; }
+
+  /* Garante padding lateral em todas as seções */
+  section { padding-left: 20px !important; padding-right: 20px !important; box-sizing: border-box; }
+
+  /* Texto não ultrapassa a tela */
+  p, h1, h2, h3, h4, span, li { word-break: break-word; overflow-wrap: break-word; max-width: 100%; }
 
   /* Form grid interno: 1 coluna */
   .form-grid-2 { grid-template-columns: 1fr !important; }

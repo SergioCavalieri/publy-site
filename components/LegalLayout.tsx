@@ -47,10 +47,10 @@ export default function LegalLayout({ title, subtitle, updatedAt, sections }: Le
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }} />
 
         {/* Conteúdo */}
-        <div style={{ maxWidth: 760, margin: "0 auto", padding: "56px 24px 80px", display: "grid", gridTemplateColumns: "200px 1fr", gap: 48, alignItems: "start" }}>
+        <div className="legal-grid" style={{ maxWidth: 760, margin: "0 auto", padding: "56px 24px 80px", display: "grid", gridTemplateColumns: "200px 1fr", gap: 48, alignItems: "start" }}>
 
           {/* Índice lateral */}
-          <aside style={{ position: "sticky", top: 100 }}>
+          <aside className="legal-aside" style={{ position: "sticky", top: 100 }}>
             <div style={{ fontSize: 11, fontWeight: 700, color: "#444", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>
               Seções
             </div>
