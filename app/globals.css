@@ -164,8 +164,8 @@ a { text-decoration: none; color: inherit; }
   .grid-4    { grid-template-columns: repeat(2,1fr) !important; }
   .tipos-grid { grid-template-columns: repeat(2,1fr) !important; }
 
-  /* Mockups — esconde no mobile */
-  .mockup-wrapper { display: none !important; }
+  /* Esconde elementos grandes no mobile */
+  .hide-mobile { display: none !important; }
 
   /* Legal layout: 1 coluna, esconde índice lateral */
   .legal-grid { grid-template-columns: 1fr !important; gap: 0 !important; }
