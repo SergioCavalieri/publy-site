@@ -167,11 +167,6 @@ a { text-decoration: none; color: inherit; }
   /* Esconde elementos grandes no mobile */
   .hide-mobile { display: none !important; }
 
-  /* Mockups — zoom para caber na tela */
-  .mockup-scale {
-    zoom: 0.38;
-    max-width: 264% !important;
-  }
 
   /* Legal layout: 1 coluna, esconde índice lateral */
   .legal-grid { grid-template-columns: 1fr !important; gap: 0 !important; }
