@@ -8,24 +8,28 @@ interface Props {
 }
 
 export default function ScaledMockup({ children, originalWidth, originalHeight }: Props) {
-  const ref = useRef<HTMLDivElement>(null);
+  const outerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
     const update = () => {
-      if (ref.current) {
-        const available = ref.current.offsetWidth;
+      if (!outerRef.current) return;
+      const available = outerRef.current.getBoundingClientRect().width;
+      if (available > 0) {
         setScale(Math.min(1, available / originalWidth));
       }
     };
-    update();
+    // Pequeno delay para garantir que o layout está pronto
+    const t = setTimeout(update, 50);
     const ro = new ResizeObserver(update);
-    if (ref.current) ro.observe(ref.current);
-    return () => ro.disconnect();
+    if (outerRef.current) ro.observe(outerRef.current);
+    return () => { clearTimeout(t); ro.disconnect(); };
   }, [originalWidth]);
 
+  const containerHeight = Math.max(50, originalHeight * scale);
+
   return (
-    <div ref={ref} style={{ width: "100%", height: originalHeight * scale, overflow: "hidden", position: "relative" }}>
+    <div ref={outerRef} style={{ width: "100%", overflow: "hidden", position: "relative", height: containerHeight }}>
       <div style={{
         width: originalWidth,
         transform: `scale(${scale})`,
@@ -33,6 +37,7 @@ export default function ScaledMockup({ children, originalWidth, originalHeight }
         position: "absolute",
         top: 0,
         left: 0,
+        pointerEvents: "none",
       }}>
         {children}
       </div>

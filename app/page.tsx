@@ -575,7 +575,7 @@ export default function HomePage() {
         {/* Kanban mock — tema escuro, fiel ao app real */}
         <HeroFade delay={0.7}>
           <div style={{ position: "relative", marginTop: 72, width: "100%", animation: "gridFloat 6s ease-in-out infinite" }}>
-            <ScaledMockup originalWidth={1100} originalHeight={590}>
+            <ScaledMockup originalWidth={1100} originalHeight={360}>
               <KanbanMock />
             </ScaledMockup>
           </div>
