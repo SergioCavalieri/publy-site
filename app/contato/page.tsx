@@ -182,7 +182,7 @@ export default function ContatoPage() {
               )}
 
               <form onSubmit={handleSubmit}>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 20px" }}>
+                <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 20px" }}>
                   <Field label="Nome completo" required>
                     <input
                       style={inputStyle("nome")}

@@ -155,7 +155,7 @@ export default function PlanosClient({ planos }: Props) {
           <p>Não foi possível carregar os planos. Tente novamente em instantes.</p>
         </div>
       ) : (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 20 }}>
+        <div className="planos-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 20 }}>
           {planos.map((plano) => {
             const tier = getTier(plano.nome);
             const config = TIER_CONFIG[tier];
