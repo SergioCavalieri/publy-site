@@ -204,16 +204,14 @@ a { text-decoration: none; color: inherit; }
   /* Footer */
   .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
 
-  /* Mockups — contém overflow horizontal */
-  .mockup-wrapper {
-    overflow: hidden !important;
-    border-radius: 16px !important;
-    max-width: 100% !important;
+  /* Spotlight — remove gap quando mockup some */
+  .spotlight-grid, .spotlight-grid-reverse {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
   }
-  .mockup-wrapper > * {
-    transform: scale(0.75) !important;
-    transform-origin: top center !important;
-  }
+
+  /* Mockups — esconde no mobile */
+  .mockup-wrapper { display: none !important; }
 
   /* Overflow prevention */
   img, video, iframe { max-width: 100%; }
