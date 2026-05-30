@@ -201,6 +201,21 @@ a { text-decoration: none; color: inherit; }
     align-items: center !important;
   }
 
+  /* Footer */
+  .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+
+  /* Mockups — contém overflow horizontal */
+  .mockup-wrapper {
+    overflow: hidden !important;
+    border-radius: 16px !important;
+    max-width: 100% !important;
+  }
+  .mockup-wrapper > * {
+    transform: scale(0.75) !important;
+    transform-origin: top center !important;
+  }
+
   /* Overflow prevention */
   img, video, iframe { max-width: 100%; }
+  section { overflow-x: hidden; }
 }

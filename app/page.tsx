@@ -573,7 +573,7 @@ export default function HomePage() {
 
         {/* Kanban mock — tema escuro, fiel ao app real */}
         <HeroFade delay={0.7}>
-          <div style={{ position: "relative", marginTop: 72, maxWidth: 1100, width: "100%", animation: "gridFloat 6s ease-in-out infinite" }}>
+          <div className="mockup-wrapper" style={{ position: "relative", marginTop: 72, maxWidth: 1100, width: "100%", animation: "gridFloat 6s ease-in-out infinite" }}>
             <KanbanMock />
           </div>
         </HeroFade>
@@ -631,7 +631,7 @@ export default function HomePage() {
 
           {/* Mock phone */}
           <SlideRight>
-            <div style={{ display: "flex", justifyContent: "center", position: "relative" }}>
+            <div className="mockup-wrapper" style={{ display: "flex", justifyContent: "center", position: "relative" }}>
               <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 320, height: 320, background: "radial-gradient(ellipse, rgba(79,142,247,0.15) 0%, transparent 70%)", pointerEvents: "none" }} />
               <div style={{ animation: "gridFloat 7s ease-in-out infinite" }}>
                 <PhoneMockMesa />
@@ -646,7 +646,7 @@ export default function HomePage() {
         <div className="spotlight-grid" style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }}>
           {/* Mock desktop */}
           <SlideLeft>
-            <div style={{ position: "relative" }}>
+            <div className="mockup-wrapper" style={{ position: "relative" }}>
               <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 500, height: 300, background: "radial-gradient(ellipse, rgba(79,142,247,0.1) 0%, transparent 70%)", pointerEvents: "none" }} />
               <div style={{ animation: "gridFloat 8s ease-in-out infinite", position: "relative" }}>
                 <DesktopMockAnalytics />

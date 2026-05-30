@@ -37,7 +37,7 @@ export default function Navbar({ dark = true }: { dark?: boolean }) {
         <button
           className="navbar-hamburger"
           onClick={() => setOpen(!open)}
-          style={{ background: "none", border: "none", color: "#e8e8e8", padding: 8, display: "none", flexDirection: "column", gap: 5, cursor: "pointer" }}
+          style={{ background: "none", border: "none", color: "#e8e8e8", padding: "8px 0 8px 8px", display: "none", flexDirection: "column", gap: 5, cursor: "pointer", flexShrink: 0 }}
           aria-label="Menu"
         >
           <span style={{ display: "block", width: 22, height: 2, background: open ? "transparent" : "#e8e8e8", transition: "all 0.2s" }} />

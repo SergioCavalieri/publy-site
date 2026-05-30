@@ -10,7 +10,7 @@ export default function Footer() {
       padding: "48px 24px 32px",
     }}>
       <div style={{ maxWidth: 1120, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: 48, marginBottom: 48 }}>
+        <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: 48, marginBottom: 48 }}>
           {/* Brand */}
           <div>
             <PublyLogo size={10} gap={3} withName nameSize={16} dark animated />
