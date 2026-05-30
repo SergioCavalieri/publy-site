@@ -58,8 +58,8 @@ const ICON_HORARIO = (
 );
 
 const INFO_CARDS = [
-  { icon: ICON_EMAIL,   title: "E-mail",  desc: "contato@publy.app",  sub: "Respondemos em até 24h úteis" },
-  { icon: ICON_SUPORTE, title: "Suporte", desc: "suporte@publy.app",   sub: "Para clientes com assinatura ativa" },
+  { icon: ICON_EMAIL,   title: "E-mail",  desc: "contato@publy.tech",  sub: "Respondemos em até 24h úteis" },
+  { icon: ICON_SUPORTE, title: "Suporte", desc: "suporte@publy.tech",   sub: "Para clientes com assinatura ativa" },
   { icon: ICON_HORARIO, title: "Horário", desc: "Seg–Sex, 9h às 18h", sub: "Horário de Brasília (GMT-3)" },
 ];
 

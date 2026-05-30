@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { nome, email, telefone, assunto, mensagem } = body;
 
-    // Validação básica
     if (!nome || !email || !mensagem) {
       return NextResponse.json({ error: "Campos obrigatórios faltando." }, { status: 400 });
     }
@@ -16,32 +18,28 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Mensagem muito curta." }, { status: 400 });
     }
 
-    const contatoData = { nome, email, telefone: telefone || "", assunto: assunto || "Geral", mensagem };
-
-    // ── Opção 1: Webhook (Discord, Slack, Make, Zapier) ──────────
-    const webhookUrl = process.env.CONTACT_WEBHOOK_URL;
-    if (webhookUrl) {
-      await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          content: `📬 **Novo contato via site Publy**\n**Nome:** ${nome}\n**E-mail:** ${email}\n**Telefone:** ${telefone || "—"}\n**Assunto:** ${assunto || "Geral"}\n**Mensagem:**\n${mensagem}`,
-        }),
-      }).catch(() => {}); // não falha se webhook falhar
-    }
-
-    // ── Opção 2: SaaS backend (se disponível) ───────────────────
-    const saasUrl = process.env.NEXT_PUBLIC_SAAS_API_URL;
-    if (saasUrl) {
-      await fetch(`${saasUrl}/api/v1/public/contato`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(contatoData),
-      }).catch(() => {}); // não falha se backend não tiver o endpoint ainda
-    }
-
-    // Log local (sempre)
-    console.log("[Publy Contato]", new Date().toISOString(), contatoData);
+    await resend.emails.send({
+      from: "Publy Site <contato@publy.tech>",
+      to: "contato@publy.tech",
+      replyTo: email,
+      subject: `[Contato] ${assunto || "Geral"} — ${nome}`,
+      html: `
+        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:32px;background:#0f0f0f;color:#e8e8e8;border-radius:12px">
+          <h2 style="color:#4F8EF7;margin-bottom:24px">Novo contato via site Publy</h2>
+          <table style="width:100%;border-collapse:collapse">
+            <tr><td style="padding:8px 0;color:#888;width:120px">Nome</td><td style="padding:8px 0;font-weight:600">${nome}</td></tr>
+            <tr><td style="padding:8px 0;color:#888">E-mail</td><td style="padding:8px 0"><a href="mailto:${email}" style="color:#4F8EF7">${email}</a></td></tr>
+            <tr><td style="padding:8px 0;color:#888">Telefone</td><td style="padding:8px 0">${telefone || "—"}</td></tr>
+            <tr><td style="padding:8px 0;color:#888">Assunto</td><td style="padding:8px 0">${assunto || "Geral"}</td></tr>
+          </table>
+          <div style="margin-top:24px;padding:20px;background:#1a1a1a;border-radius:8px;border-left:3px solid #4F8EF7">
+            <div style="color:#888;font-size:12px;margin-bottom:8px">MENSAGEM</div>
+            <div style="line-height:1.7;white-space:pre-wrap">${mensagem}</div>
+          </div>
+          <p style="margin-top:24px;font-size:12px;color:#555">Enviado via publy.tech em ${new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })}</p>
+        </div>
+      `,
+    });
 
     return NextResponse.json({ ok: true, mensagem: "Mensagem recebida com sucesso! Responderemos em até 24 horas." });
   } catch (err) {

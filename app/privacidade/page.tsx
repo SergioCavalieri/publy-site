@@ -34,7 +34,7 @@ export default function PrivacidadePage() {
             <>
               <P>A Publy Tecnologia Ltda. ("Publy", "nós") é a <strong>controladora dos dados pessoais</strong> coletados por meio do sistema Publy, em conformidade com a Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).</P>
               <P>Esta Política descreve como coletamos, usamos, armazenamos, compartilhamos e protegemos seus dados pessoais. Ao utilizar o Serviço, você concorda com as práticas descritas aqui.</P>
-              <P><strong>Contato do Encarregado (DPO):</strong> privacidade@publy.app</P>
+              <P><strong>Contato do Encarregado (DPO):</strong> privacidade@publy.tech</P>
             </>
           ),
         },
@@ -141,7 +141,7 @@ export default function PrivacidadePage() {
           title: "Seus Direitos (LGPD — Art. 18)",
           content: (
             <>
-              <P>Como titular de dados, você tem os seguintes direitos que podem ser exercidos a qualquer momento pelo e-mail <strong>privacidade@publy.app</strong>:</P>
+              <P>Como titular de dados, você tem os seguintes direitos que podem ser exercidos a qualquer momento pelo e-mail <strong>privacidade@publy.tech</strong>:</P>
               <ul style={{ paddingLeft: 20, marginBottom: 12 }}>
                 {[
                   "Confirmação da existência do tratamento",
@@ -172,7 +172,7 @@ export default function PrivacidadePage() {
           content: (
             <>
               <P>Podemos atualizar esta Política periodicamente. Alterações relevantes serão comunicadas por e-mail com pelo menos 15 (quinze) dias de antecedência ou mediante aviso no painel do sistema.</P>
-              <P>Para dúvidas sobre esta Política de Privacidade, entre em contato com nosso Encarregado de Proteção de Dados (DPO): <strong>privacidade@publy.app</strong></P>
+              <P>Para dúvidas sobre esta Política de Privacidade, entre em contato com nosso Encarregado de Proteção de Dados (DPO): <strong>privacidade@publy.tech</strong></P>
             </>
           ),
         },

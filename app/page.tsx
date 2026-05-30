@@ -290,7 +290,7 @@ function DesktopMockAnalytics() {
         ))}
         <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
           <div style={{ background: "#2a2a2a", borderRadius: 5, padding: "3px 18px", fontSize: 10, color: "#666", fontFamily: "monospace" }}>
-            publy.app/admin/analytics
+            publy.tech/admin/analytics
           </div>
         </div>
       </div>
@@ -426,7 +426,7 @@ function KanbanMock() {
         ))}
         <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
           <div style={{ background: "#2a2a2a", borderRadius: 6, padding: "4px 20px", fontSize: 11, color: "#888", fontFamily: "monospace", letterSpacing: "0.02em" }}>
-            publy.app/admin/pedidos
+            publy.tech/admin/pedidos
           </div>
         </div>
       </div>
@@ -779,7 +779,7 @@ export default function HomePage() {
             Começar agora — grátis →
           </Link>
           <p style={{ color: "#444", fontSize: 13, marginTop: 20 }}>
-            Dúvidas? <a href="mailto:contato@publy.app" style={{ color: C }}>contato@publy.app</a>
+            Dúvidas? <a href="mailto:contato@publy.tech" style={{ color: C }}>contato@publy.tech</a>
           </p>
         </FadeUp>
       </section>

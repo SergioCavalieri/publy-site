@@ -85,7 +85,7 @@ export default function TermosPage() {
           title: "Cancelamento",
           content: (
             <>
-              <P>O Cliente pode cancelar a assinatura a qualquer momento, sem multa, diretamente pelo painel administrativo ou por e-mail para contato@publy.app.</P>
+              <P>O Cliente pode cancelar a assinatura a qualquer momento, sem multa, diretamente pelo painel administrativo ou por e-mail para contato@publy.tech.</P>
               <P>O cancelamento tem efeito ao final do período já pago. Não há reembolso proporcional de valores pagos, exceto nos casos previstos pelo Código de Defesa do Consumidor (Lei 8.078/1990).</P>
               <P>Após o cancelamento, os dados do estabelecimento ficam disponíveis para exportação por 30 (trinta) dias. Após esse prazo, poderão ser excluídos definitivamente.</P>
             </>
@@ -114,7 +114,7 @@ export default function TermosPage() {
           content: (
             <>
               <P>O Publy envidar esforços para manter o Serviço disponível 24 horas por dia, 7 dias por semana. No entanto, não garantimos disponibilidade ininterrupta, podendo haver interrupções para manutenção, atualizações ou por fatores externos.</P>
-              <P>O suporte ao cliente é prestado via e-mail (contato@publy.app) em dias úteis, horário comercial de Brasília (GMT-3). Planos Pró e Pró Max possuem suporte prioritário.</P>
+              <P>O suporte ao cliente é prestado via e-mail (contato@publy.tech) em dias úteis, horário comercial de Brasília (GMT-3). Planos Pró e Pró Max possuem suporte prioritário.</P>
             </>
           ),
         },
@@ -150,7 +150,7 @@ export default function TermosPage() {
           content: (
             <>
               <P>Estes Termos são regidos pelas leis da República Federativa do Brasil. Fica eleito o foro da comarca de São José dos Campos/SP para dirimir quaisquer controvérsias, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</P>
-              <P>Dúvidas sobre estes Termos podem ser enviadas para: <strong>contato@publy.app</strong></P>
+              <P>Dúvidas sobre estes Termos podem ser enviadas para: <strong>contato@publy.tech</strong></P>
             </>
           ),
         },

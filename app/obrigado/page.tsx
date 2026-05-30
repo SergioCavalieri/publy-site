@@ -104,7 +104,7 @@ function ObrigadoContent() {
         </div>
 
         <p className="fade-up-5" style={{ color: "#444", fontSize: 13, marginTop: 24 }}>
-          Dúvidas? <a href="mailto:contato@publy.app" style={{ color: "#4F8EF7" }}>contato@publy.app</a>
+          Dúvidas? <a href="mailto:contato@publy.tech" style={{ color: "#4F8EF7" }}>contato@publy.tech</a>
         </p>
       </div>
     </div>
