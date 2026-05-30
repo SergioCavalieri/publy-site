@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
       from: "Publy Site <contato@publy.tech>",
-      to: "contato@publy.tech",
+      to: "publytecnologia@gmail.com",
       replyTo: email,
       subject: `[Contato] ${assunto || "Geral"} — ${nome}`,
       html: `
