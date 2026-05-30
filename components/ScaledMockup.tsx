@@ -32,11 +32,11 @@ export default function ScaledMockup({ children, originalWidth, originalHeight }
     <div ref={outerRef} style={{ width: "100%", overflow: "hidden", position: "relative", height: containerHeight }}>
       <div style={{
         width: originalWidth,
-        transform: `scale(${scale})`,
-        transformOrigin: "top left",
+        transform: `translateX(-50%) scale(${scale})`,
+        transformOrigin: "top center",
         position: "absolute",
         top: 0,
-        left: 0,
+        left: "50%",
         pointerEvents: "none",
       }}>
         {children}
