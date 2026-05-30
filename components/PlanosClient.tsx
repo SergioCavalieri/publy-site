@@ -77,14 +77,17 @@ export default function PlanosClient({ planos }: Props) {
   return (
     <>
       {/* ── Seletor de período ── */}
-      <div style={{ display: "flex", justifyContent: "center", marginBottom: 48 }}>
+      <div style={{ display: "flex", justifyContent: "center", marginBottom: 48, padding: "0 16px" }}>
         <div style={{
-          display: "inline-flex",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
           background: "#141414",
           border: "1px solid rgba(255,255,255,0.08)",
           borderRadius: 14,
           padding: 4,
           gap: 2,
+          maxWidth: "100%",
         }}>
           {OPCOES.map(({ valor, label, badge }) => {
             const ativo = periodo === valor;
