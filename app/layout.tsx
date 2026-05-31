@@ -30,6 +30,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="image/svg+xml"
           href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Crect x='16' y='8' width='20' height='20' rx='4' fill='%234F8EF7' opacity='1'/%3E%3Crect x='42' y='8' width='20' height='20' rx='4' fill='%234F8EF7' opacity='0.45'/%3E%3Crect x='16' y='32' width='20' height='20' rx='4' fill='%234F8EF7' opacity='0.45'/%3E%3Crect x='42' y='32' width='20' height='20' rx='4' fill='%234F8EF7' opacity='1'/%3E%3Crect x='16' y='56' width='20' height='20' rx='4' fill='%234F8EF7' opacity='1'/%3E%3Crect x='42' y='56' width='20' height='20' rx='4' fill='%234F8EF7' opacity='0.2'/%3E%3C/svg%3E"
         />
+        {/* Preconnect GA4 — reduz latência do script de analytics */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
       <body>
         <GoogleAnalytics />
