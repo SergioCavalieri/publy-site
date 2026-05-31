@@ -13,10 +13,10 @@
 
 import Script from "next/script";
 
-export const GA_ID = "G-XXXXXXXXXX"; // ← substituir pelo ID real
+export const GA_ID = "G-RL73F157TS";
 
 export default function GoogleAnalytics() {
-  if (GA_ID === "G-XXXXXXXXXX") return null; // Não carrega em desenvolvimento
+  if (!GA_ID || GA_ID === "G-XXXXXXXXXX") return null;
 
   return (
     <>
