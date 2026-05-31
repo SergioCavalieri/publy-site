@@ -33,6 +33,7 @@ export const baseMetadata: Metadata = {
   creator: "Publy",
   publisher: "Publy",
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  verification: { google: "3WBqnYvtQn24ksjoPkkLAkHEsuzTGZ6xM85azB2hcmg" },
   openGraph: {
     type: "website",
     locale: "pt_BR",
