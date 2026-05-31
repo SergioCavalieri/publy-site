@@ -187,3 +187,59 @@ a { text-decoration: none; color: inherit; }
   /* Planos */
   .plan-card { padding: 24px 20px !important; }
 }
+
+/* ── Blog — tipografia dos artigos ──────────────────────────────────── */
+.prose-publy {
+  color: #ccc;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.prose-publy h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin: 2.2em 0 0.7em;
+  line-height: 1.3;
+}
+.prose-publy h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #eee;
+  margin: 1.8em 0 0.5em;
+  line-height: 1.3;
+}
+.prose-publy p {
+  margin-bottom: 1.3em;
+  color: #aaa;
+}
+.prose-publy strong {
+  color: #fff;
+  font-weight: 600;
+}
+.prose-publy a {
+  color: #4F8EF7;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-publy a:hover { color: #7AADFF; }
+.prose-publy ul, .prose-publy ol {
+  padding-left: 1.5em;
+  margin-bottom: 1.3em;
+  color: #aaa;
+}
+.prose-publy li { margin-bottom: 0.5em; line-height: 1.7; }
+.prose-publy li strong { color: #fff; }
+.blog-card:hover {
+  border-color: rgba(79,142,247,0.4) !important;
+  transform: translateY(-2px);
+}
+
+.prose-publy blockquote {
+  border-left: 3px solid #4F8EF7;
+  padding: 12px 20px;
+  margin: 1.5em 0;
+  background: rgba(79,142,247,0.06);
+  border-radius: 0 8px 8px 0;
+  color: #999;
+  font-style: italic;
+}

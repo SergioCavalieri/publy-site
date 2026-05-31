@@ -29,6 +29,7 @@ export default function Navbar({ dark = true }: { dark?: boolean }) {
         <div className="navbar-desktop" style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <Link href="/planos" style={{ padding: "8px 16px", fontSize: 14, fontWeight: 500, color: "#888", borderRadius: 8 }}>Planos</Link>
           <Link href="/#funcionalidades" style={{ padding: "8px 16px", fontSize: 14, fontWeight: 500, color: "#888", borderRadius: 8 }}>Funcionalidades</Link>
+          <Link href="/blog" style={{ padding: "8px 16px", fontSize: 14, fontWeight: 500, color: "#888", borderRadius: 8 }}>Blog</Link>
           <Link href="/contato" style={{ padding: "8px 16px", fontSize: 14, fontWeight: 500, color: "#888", borderRadius: 8 }}>Contato</Link>
           <Link href="/planos" className="btn-primary" style={{ padding: "10px 22px", fontSize: 14 }}>Começar grátis</Link>
         </div>
@@ -54,6 +55,7 @@ export default function Navbar({ dark = true }: { dark?: boolean }) {
         }}>
           <Link href="/planos" onClick={() => setOpen(false)} style={{ padding: "12px 0", fontSize: 16, fontWeight: 500, color: "#e8e8e8", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>Planos</Link>
           <Link href="/#funcionalidades" onClick={() => setOpen(false)} style={{ padding: "12px 0", fontSize: 16, fontWeight: 500, color: "#e8e8e8", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>Funcionalidades</Link>
+          <Link href="/blog" onClick={() => setOpen(false)} style={{ padding: "12px 0", fontSize: 16, fontWeight: 500, color: "#e8e8e8", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>Blog</Link>
           <Link href="/contato" onClick={() => setOpen(false)} style={{ padding: "12px 0", fontSize: 16, fontWeight: 500, color: "#e8e8e8", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>Contato</Link>
           <Link href="/planos" className="btn-primary" onClick={() => setOpen(false)} style={{ marginTop: 12, textAlign: "center" }}>Começar grátis</Link>
         </div>
