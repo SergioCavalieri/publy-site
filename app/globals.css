@@ -134,6 +134,16 @@ a { text-decoration: none; color: inherit; }
   border-color: rgba(79,142,247,0.25) !important;
 }
 
+/* ── Página /assinar ── */
+.assinar-outer-grid {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 32px;
+  align-items: start;
+}
+
 /* Seções com leve variação de profundidade */
 .section-alt {
   background: #111111;
@@ -189,6 +199,11 @@ a { text-decoration: none; color: inherit; }
 
   /* Neutraliza offset X do SlideLeft/SlideRight — evita clipping por overflow-x:hidden */
   .slide-animate { transform: none !important; }
+
+  /* Página /assinar — 1 coluna no mobile */
+  .assinar-outer-grid { grid-template-columns: 1fr; }
+  .assinar-outer-grid .assinar-sidebar { position: static !important; }
+  .assinar-wrap { padding: 80px 20px 48px !important; }
 }
 
 /* ── Blog — tipografia dos artigos ──────────────────────────────────── */

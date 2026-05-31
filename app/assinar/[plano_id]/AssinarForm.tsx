@@ -143,8 +143,8 @@ export default function AssinarForm({ plano, periodo }: Props) {
   };
 
   return (
-    <div style={{ minHeight: "100vh", padding: "100px 24px 64px" }}>
-      <div style={{ maxWidth: 960, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 380px", gap: 32, alignItems: "start" }}>
+    <div className="assinar-wrap" style={{ minHeight: "100vh", padding: "100px 24px 64px" }}>
+      <div className="assinar-outer-grid">
 
         {/* ── Formulário ── */}
         <div style={{
@@ -163,7 +163,7 @@ export default function AssinarForm({ plano, periodo }: Props) {
             <div style={{ fontSize: 11, fontWeight: 700, color: "#4F8EF7", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16 }}>
               Dados do responsável
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
+            <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
               <Field label="Nome completo *">
                 <input className="field-input" value={form.nome} onChange={(e) => set("nome", e.target.value)} required placeholder="João Silva" />
               </Field>
@@ -188,7 +188,7 @@ export default function AssinarForm({ plano, periodo }: Props) {
             <div style={{ fontSize: 11, fontWeight: 700, color: "#4F8EF7", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16, marginTop: 8, borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 20 }}>
               Dados do estabelecimento
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
+            <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
               <div style={{ gridColumn: "1/-1" }}>
                 <Field label="Nome do estabelecimento *">
                   <input className="field-input" value={form.nome_estabelecimento} onChange={(e) => set("nome_estabelecimento", e.target.value)} required placeholder="Ex: Cantina do João, Café Vila..." />
@@ -213,7 +213,7 @@ export default function AssinarForm({ plano, periodo }: Props) {
             <div style={{ fontSize: 11, fontWeight: 700, color: "#4F8EF7", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16, marginTop: 8, borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: 20 }}>
               Endereço do estabelecimento
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
+            <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
               <Field label="CEP">
                 <input className="field-input" value={form.cep} onChange={(e) => set("cep", e.target.value)} onBlur={(e) => buscarCep(e.target.value)} placeholder="00000-000" maxLength={9} />
               </Field>
@@ -283,7 +283,7 @@ export default function AssinarForm({ plano, periodo }: Props) {
         </div>
 
         {/* ── Resumo do plano ── */}
-        <div style={{ position: "sticky", top: 90 }}>
+        <div className="assinar-sidebar" style={{ position: "sticky", top: 90 }}>
           <div style={{
             background: "#141414", borderRadius: 20, padding: 28,
             border: "1px solid rgba(255,255,255,0.08)",
