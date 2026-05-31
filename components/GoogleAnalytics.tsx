@@ -16,7 +16,6 @@ import Script from "next/script";
 export const GA_ID = "G-RL73F157TS";
 
 export default function GoogleAnalytics() {
-  if (!GA_ID || GA_ID === "G-XXXXXXXXXX") return null;
 
   return (
     <>
