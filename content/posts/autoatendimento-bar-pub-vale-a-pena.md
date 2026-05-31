@@ -3,7 +3,7 @@ title: "Autoatendimento em bar e pub: vale a pena? Veja prós, contras e como im
 description: "O autoatendimento em bares e pubs via QR Code realmente funciona? Conheça os prós, contras e o que considerar antes de implementar no seu estabelecimento."
 date: "2026-05-30"
 tags: ["autoatendimento", "bar", "pub", "tecnologia", "atendimento"]
-coverEmoji: "🍻"
+coverIcon: "qrcode"
 readTime: 6
 ---
 

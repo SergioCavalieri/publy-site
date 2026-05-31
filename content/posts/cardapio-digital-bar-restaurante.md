@@ -3,7 +3,7 @@ title: "Cardápio digital para bar e restaurante: como funciona e por que adotar
 description: "Entenda como o cardápio digital via QR Code transforma a operação de bares e restaurantes, reduz erros e aumenta o ticket médio."
 date: "2026-05-20"
 tags: ["cardápio digital", "bar", "restaurante", "QR code"]
-coverEmoji: "🍺"
+coverIcon: "cardapio"
 readTime: 6
 ---
 

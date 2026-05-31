@@ -3,7 +3,7 @@ title: "Gestão de mesas em bares e restaurantes: como organizar e lucrar mais"
 description: "Aprenda como fazer a gestão de mesas de forma eficiente em bares e restaurantes, reduzir tempo ocioso e aumentar o giro sem perder a qualidade."
 date: "2026-05-28"
 tags: ["gestão de mesas", "restaurante", "bar", "operação"]
-coverEmoji: "🪑"
+coverIcon: "kanban"
 readTime: 5
 ---
 

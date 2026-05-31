@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import FeatureIcon from "@/components/FeatureIcon";
 import { getAllPosts } from "@/lib/posts";
 import { SITE_URL } from "@/lib/seo";
 
@@ -63,15 +64,8 @@ export default function BlogPage() {
                   transition: "border-color 0.2s, transform 0.2s",
                 }}
                 >
-                  {/* Emoji */}
-                  <div style={{
-                    width: 56, height: 56, borderRadius: 12, flexShrink: 0,
-                    background: "rgba(79,142,247,0.1)", border: "1px solid rgba(79,142,247,0.2)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    fontSize: 28,
-                  }}>
-                    {post.coverEmoji}
-                  </div>
+                  {/* Ícone da marca */}
+                  <FeatureIcon name={post.coverIcon} size={56} />
 
                   {/* Content */}
                   <div style={{ flex: 1, minWidth: 0 }}>

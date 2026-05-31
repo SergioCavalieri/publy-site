@@ -3,7 +3,7 @@ title: "Sistema de pedidos via QR Code: como funciona o autoatendimento em bares
 description: "Veja como o sistema de pedidos via QR Code funciona, quais os benefícios para bares e restaurantes e como implementar sem dificuldade."
 date: "2026-05-22"
 tags: ["QR code", "sistema de pedidos", "autoatendimento", "bar"]
-coverEmoji: "📱"
+coverIcon: "qrcode"
 readTime: 5
 ---
 

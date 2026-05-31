@@ -3,7 +3,7 @@ title: "Como fidelizar clientes no bar e restaurante: estratégias que realmente
 description: "Descubra as melhores estratégias para fidelizar clientes no seu bar ou restaurante, aumentar o retorno e criar uma base fiel de frequentadores."
 date: "2026-05-26"
 tags: ["fidelização", "clientes", "bar", "restaurante", "marketing"]
-coverEmoji: "❤️"
+coverIcon: "notificacao"
 readTime: 6
 ---
 

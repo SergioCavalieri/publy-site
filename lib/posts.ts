@@ -11,7 +11,7 @@ export interface PostMeta {
   description: string;
   date: string;
   tags: string[];
-  coverEmoji: string;
+  coverIcon: string;
   readTime: number;
 }
 

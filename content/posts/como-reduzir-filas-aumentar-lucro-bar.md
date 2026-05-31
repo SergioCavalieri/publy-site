@@ -3,7 +3,7 @@ title: "Como reduzir filas e aumentar o lucro do seu bar sem contratar mais func
 description: "Estratégias práticas para eliminar filas no bar, acelerar o atendimento e aumentar o faturamento sem aumentar os custos com pessoal."
 date: "2026-05-24"
 tags: ["gestão de bar", "reduzir filas", "aumentar lucro", "atendimento"]
-coverEmoji: "💰"
+coverIcon: "conta"
 readTime: 7
 ---
 
