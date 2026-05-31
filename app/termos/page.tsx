@@ -21,7 +21,7 @@ export default function TermosPage() {
     <LegalLayout
       title="Termos de Uso"
       subtitle="Documento legal"
-      updatedAt="23 de maio de 2026"
+      updatedAt="31 de maio de 2026"
       sections={[
         {
           title: "Aceitação dos Termos",
@@ -88,6 +88,27 @@ export default function TermosPage() {
               <P>O Cliente pode cancelar a assinatura a qualquer momento, sem multa, diretamente pelo painel administrativo ou por e-mail para contato@publy.tech.</P>
               <P>O cancelamento tem efeito ao final do período já pago. Não há reembolso proporcional de valores pagos, exceto nos casos previstos pelo Código de Defesa do Consumidor (Lei 8.078/1990).</P>
               <P>Após o cancelamento, os dados do estabelecimento ficam disponíveis para exportação por 30 (trinta) dias. Após esse prazo, poderão ser excluídos definitivamente.</P>
+            </>
+          ),
+        },
+        {
+          title: "Exclusão de Dados por Inatividade",
+          content: (
+            <>
+              <P>Ao término do período de trial gratuito (14 dias), caso o Cliente não contrate um plano pago ou não renove sua assinatura, o Publy enviará um aviso por e-mail informando que os dados serão excluídos em 3 (três) dias.</P>
+              <P><strong>Exclusão automática:</strong> Decorridos 30 (trinta) dias do vencimento do trial ou da assinatura sem renovação, todos os dados do estabelecimento — incluindo produtos, pedidos, clientes, configurações e a instância do sistema — serão excluídos permanentemente dos nossos servidores, sem possibilidade de recuperação.</P>
+              <P>O Cliente é responsável por exportar seus dados antes do prazo de exclusão. O Publy não se responsabiliza pela perda de dados decorrente da não renovação dentro do prazo estabelecido.</P>
+            </>
+          ),
+        },
+        {
+          title: "Retenção de CNPJ para Segurança",
+          content: (
+            <>
+              <P>Com fundamento no legítimo interesse de prevenção a fraudes (art. 7º, IX, da LGPD — Lei 13.709/2018), o Publy retém o número do CNPJ do estabelecimento após a exclusão dos demais dados, por prazo indeterminado.</P>
+              <P>Esta retenção tem como única finalidade impedir a criação de novos trials gratuitos pelo mesmo estabelecimento após encerramento de cadastro anterior, protegendo a integridade do sistema e dos demais clientes.</P>
+              <P>Caso o titular deseje reativar o acesso ao Publy após o encerramento do cadastro, deverá entrar em contato com o suporte pelo e-mail <strong>contato@publy.tech</strong>. O Publy poderá, a seu critério, remover o CNPJ da lista de restrição mediante análise do caso.</P>
+              <P>Nenhum outro dado pessoal ou empresarial é retido além do CNPJ após a exclusão completa do cadastro.</P>
             </>
           ),
         },
