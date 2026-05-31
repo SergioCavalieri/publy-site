@@ -189,12 +189,9 @@ export default function PlanosClient({ planos }: Props) {
                   <div style={{ fontSize: 11, fontWeight: 700, color: config.cor, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>
                     {config.label}
                   </div>
-                  <div style={{ fontSize: 15, fontWeight: 600, color: "#ffffff", marginBottom: 4 }}>
+                  <div style={{ fontSize: 15, fontWeight: 600, color: "#ffffff", marginBottom: 20 }}>
                     {plano.nome}
                   </div>
-                  <p style={{ fontSize: 13, color: "#666", lineHeight: 1.5, marginBottom: 20 }}>
-                    {plano.descricao || config.desc}
-                  </p>
                 </div>
 
                 {/* Preço com animação de troca */}
