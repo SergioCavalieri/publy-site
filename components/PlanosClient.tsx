@@ -44,7 +44,7 @@ function getFeatures(plano: Plano) {
     base.push("Relatórios e analytics avançados", "Controle de estoque", "Marketing e fidelidade", "Suporte prioritário");
   }
   if (tier === "max") {
-    base.push("Onboarding dedicado", "SLA de uptime garantido");
+    base.push("Onboarding dedicado");
   }
   return base;
 }
