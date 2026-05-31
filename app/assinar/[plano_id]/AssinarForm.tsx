@@ -197,7 +197,7 @@ export default function AssinarForm({ plano, periodo }: Props) {
               <Field label="Razão Social">
                 <input className="field-input" value={form.razao_social} onChange={(e) => set("razao_social", e.target.value)} placeholder="João Ltda." />
               </Field>
-              <Field label="CNPJ">
+              <Field label="CNPJ *">
                 <input
                   className="field-input"
                   value={form.cnpj}
@@ -205,6 +205,7 @@ export default function AssinarForm({ plano, periodo }: Props) {
                   placeholder="00.000.000/0001-00"
                   inputMode="numeric"
                   maxLength={18}
+                  required
                 />
               </Field>
             </div>
