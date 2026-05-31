@@ -186,6 +186,9 @@ a { text-decoration: none; color: inherit; }
 
   /* Planos */
   .plan-card { padding: 24px 20px !important; }
+
+  /* Neutraliza offset X do SlideLeft/SlideRight — evita clipping por overflow-x:hidden */
+  .slide-animate { transform: none !important; }
 }
 
 /* ── Blog — tipografia dos artigos ──────────────────────────────────── */
