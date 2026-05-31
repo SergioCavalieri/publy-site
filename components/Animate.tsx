@@ -1,10 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import type { ReactNode, CSSProperties } from "react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const viewport = { once: true, margin: "-72px" };
+
+function useIsMobile() {
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => { setMobile(window.innerWidth < 768); }, []);
+  return mobile;
+}
 
 interface Props {
   children: ReactNode;
@@ -62,11 +69,12 @@ export function ScaleIn({ children, delay = 0, duration = 0.55, className, style
   );
 }
 
-/** Desliza da esquerda */
+/** Desliza da esquerda — sem deslocamento X no mobile para evitar clipping */
 export function SlideLeft({ children, delay = 0, duration = 0.7, className, style }: Props) {
+  const mobile = useIsMobile();
   return (
     <motion.div
-      initial={{ opacity: 0, x: -56 }}
+      initial={{ opacity: 0, x: mobile ? 0 : -56 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={viewport}
       transition={{ duration, delay, ease }}
@@ -78,11 +86,12 @@ export function SlideLeft({ children, delay = 0, duration = 0.7, className, styl
   );
 }
 
-/** Desliza da direita */
+/** Desliza da direita — sem deslocamento X no mobile para evitar clipping */
 export function SlideRight({ children, delay = 0, duration = 0.7, className, style }: Props) {
+  const mobile = useIsMobile();
   return (
     <motion.div
-      initial={{ opacity: 0, x: 56 }}
+      initial={{ opacity: 0, x: mobile ? 0 : 56 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={viewport}
       transition={{ duration, delay, ease }}
