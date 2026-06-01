@@ -1,22 +1,24 @@
 "use client";
 
-/**
- * GoogleAnalytics — Integração GA4 no publy-site
- *
- * TODO: quando o site estiver hospedado, substitua GA_ID pelo ID real:
- *   1. Acesse analytics.google.com (com sua conta Google)
- *   2. Crie uma propriedade GA4 para o publy-site
- *   3. Vá em Administrador → Fluxos de dados → Web
- *   4. Copie o "ID de medição" (começa com G-)
- *   5. Substitua "G-XXXXXXXXXX" abaixo pelo ID copiado
- */
-
 import Script from "next/script";
+import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 
 export const GA_ID = "G-RL73F157TS";
 
-export default function GoogleAnalytics() {
+function GAPageTracker() {
+  const pathname = usePathname();
 
+  useEffect(() => {
+    const w = window as Window & { gtag?: (...args: unknown[]) => void };
+    if (typeof w.gtag !== "function") return;
+    w.gtag("config", GA_ID, { page_path: pathname });
+  }, [pathname]);
+
+  return null;
+}
+
+export default function GoogleAnalytics() {
   return (
     <>
       <Script
@@ -28,12 +30,10 @@ export default function GoogleAnalytics() {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${GA_ID}', {
-            page_location: window.location.href,
-            page_title: document.title,
-          });
+          gtag('config', '${GA_ID}', { send_page_view: true });
         `}
       </Script>
+      <GAPageTracker />
     </>
   );
 }
