@@ -6,7 +6,7 @@ import "./globals.css";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "600", "700", "800"],
   variable: "--font-sans",
   display: "swap",
 });
@@ -16,6 +16,7 @@ const dmMono = DM_Mono({
   weight: ["400", "500"],
   variable: "--font-mono",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = baseMetadata;

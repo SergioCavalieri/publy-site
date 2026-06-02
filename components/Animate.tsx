@@ -131,20 +131,30 @@ export function StaggerItem({ children, className, style }: Props) {
 }
 
 /**
- * Animação do Hero — entra ao carregar a página (não espera scroll).
- * Cada elemento tem um delay diferente para criar sequência fluida.
+ * Animação do Hero — CSS puro, sem Framer Motion no caminho crítico.
+ * Usa classes já definidas em globals.css para não bloquear o LCP.
  */
+const HERO_DELAY_CLASS: Record<number, string> = {
+  0:    "fade-up",
+  0.08: "fade-up-1",
+  0.15: "fade-up-1",
+  0.16: "fade-up-2",
+  0.25: "fade-up-2",
+  0.32: "fade-up-3",
+  0.35: "fade-up-3",
+  0.40: "fade-up-4",
+  0.45: "fade-up-4",
+  0.48: "fade-up-5",
+  0.55: "fade-up-5",
+  0.7:  "fade-up-6",
+};
+
 export function HeroFade({ children, delay = 0, className, style }: Props) {
+  const cls = HERO_DELAY_CLASS[delay] ?? "fade-up";
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 22 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay, ease }}
-      className={className}
-      style={style}
-    >
+    <div className={`${cls}${className ? ` ${className}` : ""}`} style={style}>
       {children}
-    </motion.div>
+    </div>
   );
 }
 
