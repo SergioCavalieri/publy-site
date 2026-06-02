@@ -63,6 +63,35 @@ const ICONS: Record<string, (color: string) => React.ReactNode> = {
       <circle cx="17" cy="5" r="3" fill={c}/>
     </svg>
   ),
+  financeiro: (c) => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="9" stroke={c} strokeWidth="1.75" fill={c} fillOpacity="0.08"/>
+      <path d="M12 7v1.5M12 15.5V17" stroke={c} strokeWidth="1.75" strokeLinecap="round"/>
+      <path d="M9.5 10a2.5 2 0 012.5-2 2.5 2 0 012.5 2c0 1.1-.9 1.8-2.5 2-1.6.2-2.5 1-2.5 2.1a2.5 2 0 002.5 2 2.5 2 0 002.5-2" stroke={c} strokeWidth="1.75" strokeLinecap="round"/>
+    </svg>
+  ),
+  estoque: (c) => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M3 9l9-6 9 6v11a1 1 0 01-1 1H4a1 1 0 01-1-1V9Z" stroke={c} strokeWidth="1.75" fill={c} fillOpacity="0.08"/>
+      <rect x="9" y="13" width="6" height="8" rx="1" fill={c} opacity="0.35"/>
+      <path d="M9 9h6" stroke={c} strokeWidth="1.75" strokeLinecap="round"/>
+    </svg>
+  ),
+  pedidos: (c) => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <rect x="4" y="3" width="16" height="18" rx="2" stroke={c} strokeWidth="1.75" fill={c} fillOpacity="0.08"/>
+      <path d="M8 8h8M8 12h8M8 16h5" stroke={c} strokeWidth="1.75" strokeLinecap="round"/>
+      <circle cx="16.5" cy="16" r="1.5" fill={c} opacity="0.5"/>
+    </svg>
+  ),
+  equipe: (c) => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <circle cx="9" cy="8" r="3" stroke={c} strokeWidth="1.75" fill={c} fillOpacity="0.12"/>
+      <circle cx="17" cy="9" r="2.25" stroke={c} strokeWidth="1.5" fill={c} fillOpacity="0.08"/>
+      <path d="M3 20c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke={c} strokeWidth="1.75" strokeLinecap="round"/>
+      <path d="M17 14c1.657 0 3 1.343 3 3v1" stroke={c} strokeWidth="1.5" strokeLinecap="round" opacity="0.6"/>
+    </svg>
+  ),
 };
 
 export default function FeatureIcon({ name, size = 48, color = "#4F8EF7" }: FeatureIconProps) {

@@ -3,7 +3,7 @@ title: "Kanban na cozinha: como organizar pedidos e eliminar o caos no seu resta
 description: "Entenda como o sistema Kanban aplicado à cozinha de bares e restaurantes reduz erros, organiza a fila de pedidos e melhora a comunicação entre salão e cozinha."
 date: "2026-06-01"
 tags: ["kanban", "cozinha", "gestão", "restaurante", "pedidos"]
-coverIcon: "pedidos"
+coverIcon: "kanban"
 readTime: 6
 ---
 
