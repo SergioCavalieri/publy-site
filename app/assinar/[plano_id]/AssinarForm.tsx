@@ -77,6 +77,7 @@ export default function AssinarForm({ plano, periodo }: Props) {
   const router = useRouter();
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState("");
+  const [cepErro, setCepErro] = useState("");
   const [aceitouTermos, setAceitouTermos] = useState(false);
 
   const [form, setForm] = useState({
@@ -91,19 +92,27 @@ export default function AssinarForm({ plano, periodo }: Props) {
   const buscarCep = async (cep: string) => {
     const limpo = cep.replace(/\D/g, "");
     if (limpo.length !== 8) return;
+    setCepErro("");
     try {
-      const res = await fetch(`https://viacep.com.br/ws/${limpo}/json/`);
+      const res = await fetch(`https://viacep.com.br/ws/${limpo}/json/`, {
+        signal: AbortSignal.timeout(8_000),
+      });
+      if (!res.ok) throw new Error("CEP não encontrado");
       const data = await res.json();
-      if (!data.erro) {
-        setForm((f) => ({
-          ...f,
-          logradouro: data.logradouro || f.logradouro,
-          bairro:     data.bairro     || f.bairro,
-          cidade:     data.localidade || f.cidade,
-          estado:     data.uf         || f.estado,
-        }));
+      if (data.erro) {
+        setCepErro("CEP não encontrado. Preencha o endereço manualmente.");
+        return;
       }
-    } catch {}
+      setForm((f) => ({
+        ...f,
+        logradouro: data.logradouro || f.logradouro,
+        bairro:     data.bairro     || f.bairro,
+        cidade:     data.localidade || f.cidade,
+        estado:     data.uf         || f.estado,
+      }));
+    } catch {
+      setCepErro("Não foi possível buscar o CEP. Preencha o endereço manualmente.");
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -121,8 +130,7 @@ export default function AssinarForm({ plano, periodo }: Props) {
 
     setErro(""); setEnviando(true);
     try {
-      const url = process.env.NEXT_PUBLIC_SAAS_API_URL;
-      const res = await fetch(`${url}/api/v1/public/checkout`, {
+      const res = await fetch(`/api/checkout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, plano_id: plano.id, periodo, trial_dias: 14 }),
@@ -215,7 +223,8 @@ export default function AssinarForm({ plano, periodo }: Props) {
             </div>
             <div className="form-grid-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 16px" }}>
               <Field label="CEP">
-                <input className="field-input" value={form.cep} onChange={(e) => set("cep", e.target.value)} onBlur={(e) => buscarCep(e.target.value)} placeholder="00000-000" maxLength={9} />
+                <input className="field-input" value={form.cep} onChange={(e) => { set("cep", e.target.value); setCepErro(""); }} onBlur={(e) => buscarCep(e.target.value)} placeholder="00000-000" maxLength={9} />
+                {cepErro && <span style={{ fontSize: 12, color: "#f59e0b", marginTop: 4, display: "block" }}>{cepErro}</span>}
               </Field>
               <Field label="Estado (UF)">
                 <select className="field-input" value={form.estado} onChange={(e) => set("estado", e.target.value)}>

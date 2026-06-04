@@ -41,19 +41,25 @@ export interface CheckoutPayload {
   trial_dias?: number;
 }
 
+function withTimeout(ms: number): AbortSignal {
+  return AbortSignal.timeout(ms);
+}
+
 export async function getPlanos(): Promise<Plano[]> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SAAS_API_URL}/api/v1/public/planos`, {
-    cache: "no-store", // sempre busca dados frescos — alterações no saas aparecem imediatamente
+  const res = await fetch(`${process.env.SAAS_API_URL}/api/v1/public/planos`, {
+    cache: "no-store",
+    signal: withTimeout(10_000),
   });
   if (!res.ok) throw new Error("Erro ao buscar planos");
   return res.json();
 }
 
 export async function fazerCheckout(payload: CheckoutPayload) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SAAS_API_URL}/api/v1/public/checkout`, {
+  const res = await fetch(`${process.env.SAAS_API_URL}/api/v1/public/checkout`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
+    signal: withTimeout(15_000),
   });
   const data = await res.json();
   if (!res.ok) throw new Error(data.detail || "Erro ao processar cadastro");
