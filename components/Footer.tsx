@@ -55,9 +55,26 @@ export default function Footer() {
           <span style={{ color: "#444", fontSize: 13 }}>
             © {new Date().getFullYear()} Publy. Todos os direitos reservados.
           </span>
-          <span style={{ color: "#444", fontSize: 13, fontFamily: "'DM Mono', monospace" }}>
-            v1.0
-          </span>
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <a
+              href="https://www.instagram.com/publy_tec/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram da Publy"
+              style={{ color: "#444", transition: "color 0.15s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
+              onMouseLeave={e => (e.currentTarget.style.color = "#444")}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <span style={{ color: "#444", fontSize: 13, fontFamily: "'DM Mono', monospace" }}>
+              v1.0
+            </span>
+          </div>
         </div>
       </div>
     </footer>
