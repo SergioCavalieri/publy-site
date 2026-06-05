@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import type { Plano } from "@/lib/api";
 
@@ -168,11 +167,9 @@ export default function PlanosClient({ planos }: Props) {
             const temDesconto = economia > 0;
 
             return (
-              <motion.div
+              <div
                 key={plano.id}
                 className={`plan-card${config.destaque ? " destaque" : ""}`}
-                whileHover={{ y: -6, scale: 1.015 }}
-                transition={{ duration: 0.22, ease: "easeOut" }}
               >
                 {config.destaque && (
                   <div style={{
@@ -257,7 +254,7 @@ export default function PlanosClient({ planos }: Props) {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
