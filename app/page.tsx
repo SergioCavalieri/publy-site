@@ -237,6 +237,12 @@ export default function HomePage() {
 
       {/* ── Métricas ──────────────────────────────── */}
       <section className="section-alt" style={{ padding: "64px 24px" }}>
+        <div style={{ textAlign: "center", marginBottom: 40 }}>
+          <p style={{ fontSize: 13, fontWeight: 700, color: C, textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 10 }}>Resultados reais</p>
+          <h2 style={{ fontSize: "clamp(22px,3vw,32px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em" }}>
+            O impacto do Publy no seu negócio
+          </h2>
+        </div>
         <Stagger className="grid-3" style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2 }}>
           {[
             { num: "+23%",  label: "de aumento no ticket médio" },
