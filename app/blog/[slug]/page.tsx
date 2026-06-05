@@ -105,26 +105,34 @@ export default async function PostPage({ params }: Props) {
 
           {/* CTA final */}
           <div style={{
-            marginTop: 64, padding: "32px 36px",
+            marginTop: 64, padding: "40px 40px",
             background: "linear-gradient(135deg, rgba(79,142,247,0.12), rgba(79,142,247,0.04))",
             border: "1px solid rgba(79,142,247,0.25)",
-            borderRadius: 16, textAlign: "center",
+            borderRadius: 20, textAlign: "center",
           }}>
-            <div style={{ fontSize: 24, marginBottom: 12 }}>🚀</div>
-            <h3 style={{ fontSize: 20, fontWeight: 700, color: "#fff", marginBottom: 10 }}>
-              Experimente o Publy gratuitamente
+            <h3 style={{ fontSize: "clamp(20px,3vw,26px)", fontWeight: 800, color: "#fff", marginBottom: 12, lineHeight: 1.2 }}>
+              Quer atender mais mesas<br />com a mesma equipe?
             </h3>
-            <p style={{ fontSize: 14, color: "#888", marginBottom: 24, lineHeight: 1.6 }}>
-              14 dias grátis, sem cartão de crédito. Configure em menos de 30 minutos.
+            <p style={{ fontSize: 15, color: "#888", marginBottom: 28, lineHeight: 1.7, maxWidth: 420, margin: "0 auto 28px" }}>
+              Seus clientes pedem pelo celular direto da mesa. Sua equipe recebe na cozinha em tempo real — sem fila, sem pedido errado.
             </p>
-            <Link href="/planos" style={{
-              display: "inline-block", padding: "14px 32px",
-              background: "#4F8EF7", color: "#fff",
-              borderRadius: 10, fontWeight: 700, fontSize: 15,
-              textDecoration: "none",
-            }}>
-              Começar grátis →
-            </Link>
+            <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+              <Link href="/planos" className="btn-primary" style={{ fontSize: 15, padding: "14px 28px" }}>
+                Começar 14 dias grátis →
+              </Link>
+              <a
+                href="https://wa.me/5512988085252?text=Ol%C3%A1%21+Li+um+artigo+do+blog+e+tenho+interesse+no+Publy."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost-white"
+                style={{ fontSize: 15, padding: "14px 28px" }}
+              >
+                Falar pelo WhatsApp
+              </a>
+            </div>
+            <p style={{ fontSize: 12, color: "#555", marginTop: 16 }}>
+              Sem cartão de crédito · Cancele quando quiser
+            </p>
           </div>
 
           {/* Voltar ao blog */}
