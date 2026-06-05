@@ -204,13 +204,13 @@ export default function HomePage() {
 
           <HeroFade delay={0.25}>
             <h1 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 800, fontSize: "clamp(36px, 6vw, 72px)", color: "#ffffff", lineHeight: 1.1, letterSpacing: "-0.02em", marginBottom: 24 }}>
-              O sistema completo<br /><span style={{ color: C }}>para o seu negócio</span>
+              Atenda mais mesas<br /><span style={{ color: C }}>com a mesma equipe</span>
             </h1>
           </HeroFade>
 
           <HeroFade delay={0.35}>
             <p style={{ fontSize: "clamp(16px, 2vw, 20px)", color: "#888", lineHeight: 1.7, marginBottom: 40, maxWidth: 560, margin: "0 auto 40px" }}>
-              QR Code por mesa, pedidos em tempo real, kanban para a cozinha e relatórios de vendas — tudo que o seu estabelecimento precisa, num só lugar.
+              Seus clientes fazem o pedido pelo celular direto da mesa. Sua equipe recebe na cozinha em tempo real — sem fila, sem pedido errado, sem garçom sobrecarregado.
             </p>
           </HeroFade>
 

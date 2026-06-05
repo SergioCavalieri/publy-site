@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, DM_Mono } from "next/font/google";
 import { baseMetadata } from "@/lib/seo";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <GoogleAnalytics />
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );
