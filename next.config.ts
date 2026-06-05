@@ -34,6 +34,12 @@ const nextConfig: NextConfig = {
   // Permite imagens externas se necessário no futuro
   images: { domains: [] },
 
+  async redirects() {
+    return [
+      { source: "/about", destination: "/", permanent: true },
+    ];
+  },
+
   async headers() {
     return [
       {
