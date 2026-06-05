@@ -239,9 +239,9 @@ export default function HomePage() {
       <section className="section-alt" style={{ padding: "64px 24px" }}>
         <Stagger className="grid-3" style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2 }}>
           {[
-            { num: "< 30min", label: "para configurar e usar" },
-            { num: "14 dias",  label: "de trial grátis" },
-            { num: "100%",     label: "via navegador, sem app" },
+            { num: "+23%",  label: "de aumento no ticket médio" },
+            { num: "80%",   label: "menos pedidos errados" },
+            { num: "40%",   label: "mais mesas atendidas" },
           ].map(({ num, label }) => (
             <StaggerItem key={label}>
               <div style={{ textAlign: "center", padding: "32px 24px" }}>
