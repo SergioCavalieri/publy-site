@@ -8,7 +8,7 @@
  * Use as funções abaixo para rastrear eventos customizados.
  */
 
-import { GA_ID } from "@/components/GoogleAnalytics";
+import { GA_ID, AW_ID } from "@/components/GoogleAnalytics";
 
 declare global {
   interface Window {
@@ -63,6 +63,8 @@ export const trackConversao = (plano: string, email?: string) => {
     plano,
     ...(email ? { email_hash: email.toLowerCase().trim() } : {}),
   });
+  // Google Ads conversion
+  trackEvent("ads_conversion_PURCHASE_1", { send_to: AW_ID });
   // Também dispara como purchase para relatórios de e-commerce do GA4
   trackEvent("sign_up", { method: "publy_site", plano });
 };
