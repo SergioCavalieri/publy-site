@@ -64,7 +64,7 @@ export const trackConversao = (plano: string, email?: string) => {
     ...(email ? { email_hash: email.toLowerCase().trim() } : {}),
   });
   // Google Ads conversion
-  trackEvent("ads_conversion_PURCHASE_1", { send_to: AW_ID });
+  trackEvent("conversion_event_purchase", { send_to: AW_ID });
   // Também dispara como purchase para relatórios de e-commerce do GA4
   trackEvent("sign_up", { method: "publy_site", plano });
 };
