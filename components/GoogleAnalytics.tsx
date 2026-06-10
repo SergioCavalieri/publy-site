@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 export const GA_ID = "G-RL73F157TS";
+export const AW_ID = "AW-18217323024";
 
 function GAPageTracker() {
   const pathname = usePathname();
@@ -31,6 +32,7 @@ export default function GoogleAnalytics() {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '${GA_ID}', { send_page_view: true });
+          gtag('config', '${AW_ID}');
         `}
       </Script>
       <GAPageTracker />
