@@ -217,13 +217,16 @@ export default function HomePage() {
           <HeroFade delay={0.45}>
             <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <Link href="/planos" className="btn-primary" style={{ fontSize: 16, padding: "15px 36px" }}>Começar 14 dias grátis →</Link>
-              <Link href="/#funcionalidades" className="btn-ghost-white" style={{ fontSize: 16, padding: "15px 30px" }}>Ver funcionalidades</Link>
+              <Link href="/#funcionalidades" style={{ fontSize: 15, color: "#666", padding: "15px 20px", textDecoration: "underline", textUnderlineOffset: 4 }}>Ver funcionalidades</Link>
             </div>
           </HeroFade>
 
           <HeroFade delay={0.55}>
             <p style={{ color: "#555", fontSize: 13, marginTop: 20 }}>
               Sem contrato · Cancele quando quiser · Setup em 30 minutos
+            </p>
+            <p style={{ color: "#777", fontSize: 14, marginTop: 10 }}>
+              A partir de <strong style={{ color: "#ccc" }}>R$79,90/mês</strong>
             </p>
           </HeroFade>
         </div>
@@ -235,28 +238,45 @@ export default function HomePage() {
         </HeroFade>
       </section>
 
-      {/* ── Métricas ──────────────────────────────── */}
+      {/* ── Garantias ──────────────────────────────── */}
       <section className="section-alt" style={{ padding: "64px 24px" }}>
-        <div style={{ textAlign: "center", marginBottom: 40 }}>
-          <p style={{ fontSize: 13, fontWeight: 700, color: C, textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 10 }}>Resultados reais</p>
-          <h2 style={{ fontSize: "clamp(22px,3vw,32px)", fontWeight: 800, color: "#fff", letterSpacing: "-0.02em" }}>
-            O impacto do Publy no seu negócio
-          </h2>
-        </div>
         <Stagger className="grid-3" style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 2 }}>
           {[
-            { num: "+23%",  label: "de aumento no ticket médio" },
-            { num: "80%",   label: "menos pedidos errados" },
-            { num: "40%",   label: "mais mesas atendidas" },
+            { num: "14 dias", label: "grátis para testar, sem cartão de crédito" },
+            { num: "30 min",  label: "para configurar e começar a usar" },
+            { num: "Zero",    label: "taxa por pedido ou comissão sobre vendas" },
           ].map(({ num, label }) => (
             <StaggerItem key={label}>
               <div style={{ textAlign: "center", padding: "32px 24px" }}>
-                <div style={{ fontSize: "clamp(32px,4vw,48px)", fontWeight: 800, color: C, letterSpacing: "-0.02em", lineHeight: 1 }}>{num}</div>
+                <div style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: C, letterSpacing: "-0.02em", lineHeight: 1 }}>{num}</div>
                 <div style={{ fontSize: 15, color: "#888", marginTop: 8 }}>{label}</div>
               </div>
             </StaggerItem>
           ))}
         </Stagger>
+      </section>
+
+      {/* ── Como funciona ────────────────────────── */}
+      <section style={{ padding: "96px 24px" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <FadeUp style={{ textAlign: "center", marginBottom: 64 }}>
+            <div style={{ fontSize: 12, fontWeight: 700, color: C, textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 12 }}>Como funciona</div>
+            <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.02em" }}>Pronto em 3 passos</h2>
+          </FadeUp>
+          <Stagger className="steps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 32 }}>
+            {STEPS.map(({ num, title, desc }) => (
+              <StaggerItem key={num}>
+                <div style={{ textAlign: "center" }}>
+                  <div style={{ width: 56, height: 56, borderRadius: 16, background: "rgba(79,142,247,0.10)", border: "1px solid rgba(79,142,247,0.20)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
+                    <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 14, fontWeight: 500, color: C }}>{num}</span>
+                  </div>
+                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#ffffff", marginBottom: 10 }}>{title}</h3>
+                  <p style={{ fontSize: 14, color: "#888", lineHeight: 1.7 }}>{desc}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </div>
       </section>
 
       {/* ── Spotlight: Experiência do cliente ─────── */}
@@ -387,29 +407,6 @@ export default function HomePage() {
                     {icon}
                   </div>
                   <div style={{ fontSize: 13, fontWeight: 600, color: "#ccc" }}>{label}</div>
-                </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
-
-      {/* ── Como funciona ────────────────────────── */}
-      <section style={{ padding: "96px 24px" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <FadeUp style={{ textAlign: "center", marginBottom: 64 }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: C, textTransform: "uppercase", letterSpacing: "0.14em", marginBottom: 12 }}>Como funciona</div>
-            <h2 style={{ fontSize: "clamp(28px,4vw,44px)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.02em" }}>Pronto em 3 passos</h2>
-          </FadeUp>
-          <Stagger className="steps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 32 }}>
-            {STEPS.map(({ num, title, desc }) => (
-              <StaggerItem key={num}>
-                <div style={{ textAlign: "center" }}>
-                  <div style={{ width: 56, height: 56, borderRadius: 16, background: "rgba(79,142,247,0.10)", border: "1px solid rgba(79,142,247,0.20)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
-                    <span style={{ fontFamily: "'DM Mono',monospace", fontSize: 14, fontWeight: 500, color: C }}>{num}</span>
-                  </div>
-                  <h3 style={{ fontSize: 17, fontWeight: 700, color: "#ffffff", marginBottom: 10 }}>{title}</h3>
-                  <p style={{ fontSize: 14, color: "#888", lineHeight: 1.7 }}>{desc}</p>
                 </div>
               </StaggerItem>
             ))}
